@@ -23,10 +23,10 @@ const steps = [
   },
 ]
 
-export default function HowItWorks() {
+export default function HowItWorks({ sectionId = 'how-it-works' }: { sectionId?: string }) {
   return (
     <section
-      id="how-it-works"
+      id={sectionId}
       className="py-24 lg:py-36 relative"
       style={{ backgroundColor: 'var(--bg-surface)' }}
     >

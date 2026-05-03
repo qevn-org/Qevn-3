@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Button from '@/components/ui/Button'
 import QevnLogo from '@/components/ui/QevnLogo'
+import InlineIcon, { industrySlugIcon, serviceSlugIcon } from '@/components/ui/InlineIcon'
 import { services, industries } from '@/lib/data'
 
 /* ─── Types ─────────────────────────────────────────────── */
@@ -16,51 +17,12 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { label: 'Our Arsenal', href: '#services', megaMenu: 'services' },
-  { label: 'The Anatomy', href: '#how-it-works' },
-  { label: "Numbers Don't Lie", href: '#metrics' },
+  { label: 'The Anatomy', href: '/the-anatomy' },
+  { label: "Numbers Don't Lie", href: '/numbers-dont-lie' },
   { label: 'Worlds We Own', href: '#industries', megaMenu: 'industries' },
-  { label: 'QEVN Decoded', href: '#why-us' },
-  { label: 'The QEVN Files', href: '/blog' },
+  { label: 'QEVN Decoded', href: '/qevn-decoded' },
+  { label: 'The QEVN Files', href: '/the-qevn-files' },
 ]
-
-/* ─── Service icons map (emoji → icon snippet) ─────────── */
-const serviceIcons: Record<string, string> = {
-  'multi-agent-ai-systems': '⚡',
-  'ai-calling-agents': '🎙️',
-  'ai-business-auto-pilot': '🤖',
-  'ai-marketing-sales-ops': '📈',
-  'leads-to-closure': '🎯',
-  'custom-software-development': '💻',
-  'ai-chatbots': '💬',
-  'ai-appointment-booking': '📅',
-  'lead-generation-systems': '🔍',
-  'workflow-automation': '⚙️',
-}
-
-const industryIcons: Record<string, string> = {
-  'real-estate': '🏢',
-  healthcare: '🏥',
-  retail: '🛍️',
-  logistics: '🚛',
-  finance: '💳',
-  saas: '☁️',
-  hospitality: '🏨',
-  legal: '⚖️',
-  recruitment: '👥',
-  'e-commerce': '🛒',
-  education: '🎓',
-  manufacturing: '🏭',
-  insurance: '🛡️',
-  'media-entertainment': '🎬',
-  construction: '🏗️',
-  agriculture: '🌾',
-  automotive: '🚗',
-  'travel-tourism': '✈️',
-  'food-beverage': '🍽️',
-  'professional-services': '💼',
-  nonprofits: '❤️',
-  government: '🏛️',
-}
 
 /* ─── Featured items shown in mega menu spotlight ───────── */
 const featuredServices = services.slice(0, 3)
@@ -148,8 +110,11 @@ export default function Navbar() {
                     onClick={() => setActiveMega(null)}
                     className="group flex items-start gap-3 rounded-lg px-3 py-2.5 transition-all duration-150 hover:bg-white/[0.04]"
                   >
-                    <span className="mt-0.5 text-base leading-none shrink-0">
-                      {serviceIcons[s.slug] ?? '🔧'}
+                    <span
+                      className="mt-0.5 shrink-0 opacity-90"
+                      style={{ color: 'var(--accent-primary)' }}
+                    >
+                      <InlineIcon name={serviceSlugIcon[s.slug] ?? 'layout-grid'} size={18} />
                     </span>
                     <span className="flex flex-col">
                       <span
@@ -178,10 +143,11 @@ export default function Navbar() {
           style={{ background: 'rgba(200,240,75,0.03)' }}
         >
           <p
-            className="mb-3 text-[10px] font-semibold uppercase tracking-[0.12em]"
+            className="mb-3 text-[10px] font-semibold uppercase tracking-[0.12em] flex items-center gap-1.5"
             style={{ color: 'var(--accent-primary)' }}
           >
-            🔥 Most Popular
+            <InlineIcon name="sparkles" size={12} color="var(--accent-primary)" />
+            Most Popular
           </p>
           <div className="flex flex-col gap-2">
             {featuredServices.map((s) => (
@@ -195,7 +161,9 @@ export default function Navbar() {
                   background: 'rgba(200,240,75,0.04)',
                 }}
               >
-                <span className="text-xl shrink-0">{serviceIcons[s.slug] ?? '🔧'}</span>
+                <span className="shrink-0 opacity-90" style={{ color: 'var(--accent-primary)' }}>
+                  <InlineIcon name={serviceSlugIcon[s.slug] ?? 'layout-grid'} size={20} />
+                </span>
                 <div>
                   <p
                     className="text-xs font-semibold"
@@ -220,7 +188,9 @@ export default function Navbar() {
                 border: '1px solid rgba(200,240,75,0.25)',
               }}
             >
-              <span className="text-lg">🎁</span>
+              <span className="shrink-0" style={{ color: 'var(--accent-primary)' }}>
+                <InlineIcon name="gift" size={20} />
+              </span>
               <div>
                 <p
                   className="text-xs font-bold"
@@ -266,7 +236,9 @@ export default function Navbar() {
                     onClick={() => setActiveMega(null)}
                     className="group flex items-center gap-2 rounded-lg px-2.5 py-2 transition-all duration-150 hover:bg-white/[0.04]"
                   >
-                    <span className="text-sm shrink-0">{industryIcons[ind.slug] ?? '🏢'}</span>
+                    <span className="shrink-0 opacity-85" style={{ color: 'var(--accent-secondary)' }}>
+                      <InlineIcon name={industrySlugIcon[ind.slug] ?? 'building'} size={15} color="var(--accent-secondary)" />
+                    </span>
                     <span
                       className="text-xs font-medium transition-colors group-hover:text-text-primary"
                       style={{ color: 'var(--text-muted)' }}
@@ -286,10 +258,11 @@ export default function Navbar() {
           style={{ background: 'rgba(75,139,240,0.03)' }}
         >
           <p
-            className="mb-3 text-[10px] font-semibold uppercase tracking-[0.12em]"
+            className="mb-3 text-[10px] font-semibold uppercase tracking-[0.12em] flex items-center gap-1.5"
             style={{ color: 'var(--accent-secondary)' }}
           >
-            ⭐ Top Industries
+            <InlineIcon name="sparkles" size={12} color="var(--accent-secondary)" />
+            Top Industries
           </p>
           <div className="flex flex-col gap-2">
             {featuredIndustries.map((ind) => (
@@ -303,7 +276,9 @@ export default function Navbar() {
                   background: 'rgba(75,139,240,0.04)',
                 }}
               >
-                <span className="text-xl shrink-0">{industryIcons[ind.slug] ?? '🏢'}</span>
+                <span className="shrink-0 opacity-85" style={{ color: 'var(--accent-secondary)' }}>
+                  <InlineIcon name={industrySlugIcon[ind.slug] ?? 'building'} size={20} color="var(--accent-secondary)" />
+                </span>
                 <div>
                   <p
                     className="text-xs font-semibold"
@@ -373,7 +348,7 @@ export default function Navbar() {
                   href={resolvedHref}
                   onClick={() => {
                     if (link.megaMenu) setActiveMega(null)
-                    if (!link.megaMenu) handleNavClick(link.href)
+                    if (!link.megaMenu && link.href.startsWith('#')) handleNavClick(link.href)
                   }}
                   className="font-body text-sm text-text-muted hover:text-text-primary transition-colors duration-200 tracking-wide inline-flex items-center gap-1.5 py-4"
                 >
@@ -524,7 +499,8 @@ export default function Navbar() {
             color: 'var(--accent-primary)',
           }}
         >
-          🎁 Build or redesign — ₹4,999/- — Currencies & offer
+          <InlineIcon name="gift" size={18} />
+          <span>Build or redesign — ₹4,999/- — Offer & currencies</span>
         </Link>
 
         <nav className="flex flex-col gap-5 w-full">
@@ -593,10 +569,19 @@ export default function Navbar() {
                                 borderBottom: '1px solid rgba(255,255,255,0.04)',
                               }}
                             >
-                              <span>
-                                {link.megaMenu === 'services'
-                                  ? serviceIcons[(item as typeof services[0]).slug] ?? '🔧'
-                                  : industryIcons[(item as typeof industries[0]).slug] ?? '🏢'}
+                              <span className="shrink-0 opacity-90" style={{ color: 'var(--accent-primary)' }}>
+                                {link.megaMenu === 'services' ? (
+                                  <InlineIcon
+                                    name={serviceSlugIcon[(item as (typeof services)[0]).slug] ?? 'layout-grid'}
+                                    size={17}
+                                  />
+                                ) : (
+                                  <InlineIcon
+                                    name={industrySlugIcon[(item as (typeof industries)[0]).slug] ?? 'building'}
+                                    size={17}
+                                    color="var(--accent-secondary)"
+                                  />
+                                )}
                               </span>
                               <span className="hover:text-text-primary transition-colors">
                                 {item.title}
@@ -609,12 +594,13 @@ export default function Navbar() {
                   </AnimatePresence>
                 </>
               ) : (
-                <button
-                  onClick={() => handleNavClick(link.href)}
+                <Link
+                  href={link.href.startsWith('#') ? `/${link.href}` : link.href}
+                  onClick={() => setMobileOpen(false)}
                   className="font-display text-xl font-bold text-text-primary hover:text-accent-primary transition-colors text-left"
                 >
                   {link.label}
-                </button>
+                </Link>
               )}
             </motion.div>
           ))}

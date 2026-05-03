@@ -85,13 +85,13 @@ function CountUp({
   )
 }
 
-export default function Metrics() {
+export default function Metrics({ sectionId = 'metrics' }: { sectionId?: string }) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '0px 0px -100px 0px' })
 
   return (
     <section
-      id="metrics"
+      id={sectionId}
       className="py-24 lg:py-36 relative overflow-hidden"
       style={{ backgroundColor: 'var(--bg-base)' }}
       ref={ref}

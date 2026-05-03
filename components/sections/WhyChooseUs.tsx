@@ -29,10 +29,22 @@ const values = [
   },
 ]
 
-export default function WhyChooseUs() {
+interface WhyChooseUsProps {
+  sectionId?: string
+  eyebrow?: string
+  titlePrimary?: string
+  titleSecondary?: string
+}
+
+export default function WhyChooseUs({
+  sectionId = 'why-us',
+  eyebrow = 'Why Choose Us',
+  titlePrimary = 'Engineered to win.',
+  titleSecondary = 'Not built to sell.',
+}: WhyChooseUsProps) {
   return (
     <section
-      id="why-us"
+      id={sectionId}
       className="py-24 lg:py-36 relative"
       style={{ backgroundColor: 'var(--bg-base)' }}
     >
@@ -58,16 +70,16 @@ export default function WhyChooseUs() {
             className="font-mono text-xs tracking-[0.18em] uppercase mb-4 block"
             style={{ color: 'var(--accent-primary)' }}
           >
-            Why Choose Us
+            {eyebrow}
           </span>
           <h2
             className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] leading-[0.95]"
             style={{ color: 'var(--text-primary)' }}
           >
-            Engineered to win.
+            {titlePrimary}
             <br />
             <span style={{ color: 'var(--text-muted)' }}>
-              Not built to sell.
+              {titleSecondary}
             </span>
           </h2>
         </motion.div>

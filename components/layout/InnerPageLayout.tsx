@@ -4,6 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Navbar from '@/components/nav/Navbar'
+import InlineIcon from '@/components/ui/InlineIcon'
 import Footer from '@/components/footer/Footer'
 import Button from '@/components/ui/Button'
 import type { ServiceData, IndustryData } from '@/lib/data'
@@ -148,7 +149,9 @@ export function FeaturesGrid({ features, label = 'Capabilities' }: { features: {
                 className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                 style={{ boxShadow: '0 0 0 1px rgba(200,240,75,0.15), inset 0 0 40px rgba(200,240,75,0.02)' }}
               />
-              <div className="text-3xl mb-4">{feature.icon}</div>
+              <div className="mb-4" style={{ color: 'var(--accent-primary)' }}>
+                <InlineIcon name={feature.icon} size={28} />
+              </div>
               <h3 className="font-display text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
                 {feature.title}
               </h3>

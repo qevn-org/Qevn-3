@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Button from '@/components/ui/Button'
+import InlineIcon from '@/components/ui/InlineIcon'
 import type { ServiceData } from '@/lib/data'
 
 /* ─── What This Service Does ───────────────────────────────────────────── */
@@ -65,12 +66,13 @@ export function WhatThisServiceDoes({ service }: { service: ServiceData }) {
 export function WhatYouGet({ service }: { service: ServiceData }) {
   const featureBullets = service.features.map((f) => ({
     key: `f-${f.title}`,
+    kind: 'feature' as const,
     icon: f.icon,
     text: `${f.title} — ${f.description}`,
   }))
   const outcomeBullets = service.benefits.map((b, i) => ({
     key: `b-${i}`,
-    icon: '✓',
+    kind: 'benefit' as const,
     text: b,
   }))
   const rows = [...featureBullets, ...outcomeBullets]
@@ -116,8 +118,12 @@ export function WhatYouGet({ service }: { service: ServiceData }) {
                 border: '1px solid rgba(255,255,255,0.06)',
               }}
             >
-              <span className="text-lg shrink-0 leading-none mt-0.5" aria-hidden>
-                {row.icon}
+              <span className="shrink-0 mt-0.5" style={{ color: 'var(--accent-primary)' }} aria-hidden>
+                {row.kind === 'feature' ? (
+                  <InlineIcon name={row.icon} size={20} />
+                ) : (
+                  <InlineIcon name="check" size={18} />
+                )}
               </span>
               <span className="text-base leading-relaxed" style={{ color: 'var(--text-primary)' }}>
                 {row.text}
