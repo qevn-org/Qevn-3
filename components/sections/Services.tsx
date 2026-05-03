@@ -25,13 +25,13 @@ export default function Services() {
               className="font-mono text-xs tracking-[0.18em] uppercase mb-4 block"
               style={{ color: 'var(--accent-primary)' }}
             >
-              What We Build
+              Our Arsenal
             </span>
             <h2
               className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] leading-[0.95]"
               style={{ color: 'var(--text-primary)' }}
             >
-              Six Systems.
+              Every System.
               <br />
               <span style={{ color: 'var(--text-muted)' }}>
                 One Operating Layer.

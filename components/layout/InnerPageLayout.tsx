@@ -44,7 +44,7 @@ export function ServiceHero({ service }: { service: ServiceData }) {
         >
           <Link href="/" className="hover:text-text-primary transition-colors">Home</Link>
           <span>/</span>
-          <Link href="/#services" className="hover:text-text-primary transition-colors">Services</Link>
+          <Link href="/#services" className="hover:text-text-primary transition-colors">Our Arsenal</Link>
           <span>/</span>
           <span style={{ color: 'var(--accent-primary)' }}>{service.title}</span>
         </motion.div>
@@ -296,7 +296,7 @@ export function IndustryHero({ industry }: { industry: IndustryData }) {
         >
           <Link href="/" className="hover:text-text-primary transition-colors">Home</Link>
           <span>/</span>
-          <Link href="/#industries" className="hover:text-text-primary transition-colors">Industries</Link>
+          <Link href="/#industries" className="hover:text-text-primary transition-colors">Worlds We Own</Link>
           <span>/</span>
           <span style={{ color: 'var(--accent-primary)' }}>{industry.title}</span>
         </motion.div>

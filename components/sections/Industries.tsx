@@ -32,7 +32,7 @@ export default function Industries() {
               className="font-mono text-xs tracking-[0.18em] uppercase mb-4 block"
               style={{ color: 'var(--accent-primary)' }}
             >
-              Industries We Serve
+              Worlds We Own
             </span>
             <h2
               className="font-display text-4xl md:text-5xl font-extrabold tracking-[-0.04em] leading-[0.95] mb-6"
