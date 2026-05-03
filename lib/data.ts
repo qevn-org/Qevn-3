@@ -13,6 +13,13 @@ export interface ServiceData {
   features: ServiceFeature[]
   benefits: string[]
   process: { step: string; title: string; description: string }[]
+  videoSrc?: string
+  posterSrc?: string
+  videoAriaLabel?: string
+  whatThisDoes?: string[]
+  whoFor?: string[]
+  results?: { stat: string; statLabel: string; narrative: string }
+  faqs?: { q: string; a: string }[]
 }
 
 export interface IndustryData {
