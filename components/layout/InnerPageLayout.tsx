@@ -214,7 +214,15 @@ export function BenefitsSection({ benefits }: { benefits: string[] }) {
 }
 
 /* ─── Process Steps ─── */
-export function ProcessSection({ steps }: { steps: { step: string; title: string; description: string }[] }) {
+export function ProcessSection({
+  steps,
+  eyebrow = 'Our Process',
+  title = 'How We Build It',
+}: {
+  steps: { step: string; title: string; description: string }[]
+  eyebrow?: string
+  title?: string
+}) {
   return (
     <section className="py-20 lg:py-28 border-t border-white/[0.05]" style={{ backgroundColor: 'var(--bg-surface)' }}>
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
@@ -226,10 +234,10 @@ export function ProcessSection({ steps }: { steps: { step: string; title: string
           className="mb-16"
         >
           <span className="font-mono text-xs tracking-[0.18em] uppercase mb-4 block" style={{ color: 'var(--accent-primary)' }}>
-            Our Process
+            {eyebrow}
           </span>
           <h2 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight" style={{ color: 'var(--text-primary)' }}>
-            How We Build It
+            {title}
           </h2>
         </motion.div>
 

@@ -63,6 +63,18 @@ export function WhatThisServiceDoes({ service }: { service: ServiceData }) {
 
 /* ─── What You Get ─────────────────────────────────────────────────────── */
 export function WhatYouGet({ service }: { service: ServiceData }) {
+  const featureBullets = service.features.map((f) => ({
+    key: `f-${f.title}`,
+    icon: f.icon,
+    text: `${f.title} — ${f.description}`,
+  }))
+  const outcomeBullets = service.benefits.map((b, i) => ({
+    key: `b-${i}`,
+    icon: '✓',
+    text: b,
+  }))
+  const rows = [...featureBullets, ...outcomeBullets]
+
   return (
     <section
       className="py-20 lg:py-28"
@@ -91,38 +103,24 @@ export function WhatYouGet({ service }: { service: ServiceData }) {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {service.benefits.map((benefit, i) => (
+          {rows.map((row, i) => (
             <motion.div
-              key={i}
+              key={row.key}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
+              transition={{ duration: 0.5, delay: i * 0.04 }}
               className="flex items-start gap-4 p-5 rounded-xl"
               style={{
                 backgroundColor: 'var(--bg-surface)',
                 border: '1px solid rgba(255,255,255,0.06)',
               }}
             >
-              <div
-                className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style={{ backgroundColor: 'rgba(200,240,75,0.1)' }}
-              >
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path
-                    d="M2 6l3 3 5-5"
-                    stroke="var(--accent-primary)"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <span
-                className="text-base leading-relaxed"
-                style={{ color: 'var(--text-primary)' }}
-              >
-                {benefit}
+              <span className="text-lg shrink-0 leading-none mt-0.5" aria-hidden>
+                {row.icon}
+              </span>
+              <span className="text-base leading-relaxed" style={{ color: 'var(--text-primary)' }}>
+                {row.text}
               </span>
             </motion.div>
           ))}
@@ -210,7 +208,7 @@ export function ResultsProof({
             className="font-mono text-xs tracking-[0.18em] uppercase mb-4 block"
             style={{ color: 'var(--accent-primary)' }}
           >
-            Results
+            Results / Proof
           </span>
           <h2
             className="font-display text-3xl md:text-5xl font-extrabold tracking-tight"
