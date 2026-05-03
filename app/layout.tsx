@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { DM_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider'
+import SiteChrome from '@/components/layout/SiteChrome'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -62,7 +63,9 @@ export default function RootLayout({
       className={`${dmSans.variable} ${jetbrainsMono.variable} ${cabinetGrotesk.variable}`}
     >
       <body className="bg-bg-base text-text-primary antialiased">
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          <SiteChrome>{children}</SiteChrome>
+        </SmoothScrollProvider>
       </body>
     </html>
   )

@@ -25,7 +25,7 @@ export default function InnerPageLayout({ children }: InnerPageLayoutProps) {
 /* ─── Service Page Hero ─── */
 export function ServiceHero({ service }: { service: ServiceData }) {
   return (
-    <section className="relative pt-36 pb-20 lg:pt-48 lg:pb-28 overflow-hidden">
+    <section className="relative overflow-hidden pb-20 lg:pb-28 pt-[calc(var(--layout-chrome-top,104px)+2.25rem)] lg:pt-[calc(var(--layout-chrome-top,104px)+3.5rem)]">
       {/* Glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[500px] pointer-events-none"
@@ -278,7 +278,7 @@ export function ProcessSection({ steps }: { steps: { step: string; title: string
 /* ─── Industry Page Hero ─── */
 export function IndustryHero({ industry }: { industry: IndustryData }) {
   return (
-    <section className="relative pt-36 pb-20 lg:pt-48 lg:pb-28 overflow-hidden">
+    <section className="relative overflow-hidden pb-20 lg:pb-28 pt-[calc(var(--layout-chrome-top,104px)+2.25rem)] lg:pt-[calc(var(--layout-chrome-top,104px)+3.5rem)]">
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[500px] pointer-events-none"
         style={{

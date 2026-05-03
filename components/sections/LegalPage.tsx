@@ -17,7 +17,7 @@ interface LegalPageProps {
 
 export default function LegalPage({ eyebrow, title, intro, sections }: LegalPageProps) {
   return (
-    <section className="relative pt-36 pb-24 lg:pt-44 lg:pb-32 overflow-hidden">
+    <section className="relative overflow-hidden pb-24 lg:pb-32 pt-[calc(var(--layout-chrome-top,104px)+2.25rem)] lg:pt-[calc(var(--layout-chrome-top,104px)+3.25rem)]">
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[400px] pointer-events-none"
         style={{

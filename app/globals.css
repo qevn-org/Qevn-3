@@ -11,6 +11,8 @@
   --text-primary: #F2F2F0;
   --text-muted: #6B7280;
   --border: rgba(255, 255, 255, 0.07);
+  /* Banner (~40px) + nav (64px); updated live in SiteChrome */
+  --layout-chrome-top: 104px;
 }
 
 * {

@@ -9,7 +9,7 @@ export const metadata = {
 export default function BlogPage() {
   return (
     <InnerPageLayout>
-      <section className="relative pt-36 pb-32 lg:pt-44 lg:pb-40 overflow-hidden">
+      <section className="relative overflow-hidden pb-32 lg:pb-40 pt-[calc(var(--layout-chrome-top,104px)+2.25rem)] lg:pt-[calc(var(--layout-chrome-top,104px)+3.25rem)]">
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[500px] pointer-events-none"
           style={{

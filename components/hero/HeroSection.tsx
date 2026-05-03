@@ -44,7 +44,10 @@ export default function HeroSection() {
     <section
       id="hero"
       className="relative min-h-screen grid grid-cols-1 lg:grid-cols-2 items-center justify-between overflow-hidden px-6 lg:px-16"
-      style={{ backgroundColor: 'var(--bg-base)' }}
+      style={{
+        backgroundColor: 'var(--bg-base)',
+        paddingTop: 'var(--layout-chrome-top, 104px)',
+      }}
     >
       {/* Radial background glow */}
       <div
@@ -57,7 +60,7 @@ export default function HeroSection() {
 
       {/* Content - Left Side */}
       <motion.div
-        className="relative z-10 w-full text-left order-2 lg:order-1 pt-20 lg:pt-0"
+        className="relative z-10 w-full text-left order-2 lg:order-1 pt-10 sm:pt-12 lg:pt-0"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
