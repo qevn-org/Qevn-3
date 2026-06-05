@@ -129,21 +129,15 @@ export default function Metrics({ sectionId = 'metrics' }: { sectionId?: string 
         </motion.div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
-              className="relative flex flex-col items-center text-center py-12 px-6"
+              className="relative flex flex-col items-center text-center py-10 md:py-12 px-6 border-b border-white/[0.05] last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              style={{
-                borderRight:
-                  i < stats.length - 1
-                    ? '1px solid rgba(255,255,255,0.05)'
-                    : 'none',
-              }}
             >
               {/* Number */}
               <div

@@ -76,7 +76,7 @@ function NumberField({
             const n = Number(e.target.value)
             onChange(Number.isFinite(n) ? n : 0)
           }}
-          className="w-full bg-transparent border-none outline-none font-display text-lg lg:text-xl font-semibold tabular-nums"
+          className="w-full bg-transparent border-none outline-none font-display text-base sm:text-lg lg:text-xl font-semibold tabular-nums"
           style={{ color: 'var(--text-primary)' }}
         />
         {suffix && (
@@ -281,7 +281,7 @@ export default function RoiCalculator() {
 
               <div className="mb-8">
                 <div
-                  className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] leading-none mb-2 tabular-nums"
+                  className="font-display text-4xl xs:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] leading-none mb-2 tabular-nums break-words"
                   style={{ color: 'var(--accent-primary)' }}
                 >
                   {formatMoney(results.yearlySavings, currency)}

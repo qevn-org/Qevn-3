@@ -60,7 +60,7 @@ export default function HeroSection() {
 
       {/* Content - Left Side */}
       <motion.div
-        className="relative z-10 w-full text-left order-2 lg:order-1 pt-10 sm:pt-12 lg:pt-0"
+        className="relative z-10 w-full text-left order-1 lg:order-1 pt-10 sm:pt-12 lg:pt-0"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -155,9 +155,25 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* 3D Canvas - Right Side */}
-      <div className="relative w-full h-[50vh] lg:h-screen order-1 lg:order-2 flex items-center justify-center">
-        <HeroCanvas />
+      {/* 3D Canvas - Right Side (Desktop Only) / Decorative Glow (Mobile) */}
+      <div className="relative w-full h-[35vh] sm:h-[45vh] lg:h-screen order-2 lg:order-2 flex items-center justify-center overflow-hidden">
+        {/* Spline Canvas - hidden on mobile/tablet to avoid WebGL lag and layout shifts */}
+        <div className="hidden lg:block w-full h-full">
+          <HeroCanvas />
+        </div>
+        {/* Sleek, animated neon-lime radial glow for mobile/tablet */}
+        <div
+          className="lg:hidden absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none"
+          aria-hidden="true"
+        >
+          <div
+            className="w-72 h-72 rounded-full filter blur-[80px] opacity-25 animate-pulse"
+            style={{
+              background: 'radial-gradient(circle, var(--accent-primary) 0%, transparent 70%)',
+              animationDuration: '4s',
+            }}
+          />
+        </div>
       </div>
 
       {/* Scroll indicator */}

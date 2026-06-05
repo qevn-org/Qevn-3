@@ -34,7 +34,7 @@ export default function SaleBanner() {
           className="fixed top-0 left-0 right-0 z-[60] overflow-hidden"
         >
           <div
-            className="relative flex flex-nowrap items-center justify-center gap-2 sm:gap-3 px-10 sm:px-11 py-1.5 font-body min-h-[2rem]"
+            className="relative flex flex-nowrap items-center justify-center gap-2 sm:gap-3 px-4 xs:px-6 sm:px-10 py-1.5 font-body min-h-[2rem]"
             style={{
               background: 'linear-gradient(90deg, #0a0f00 0%, #1a2a00 30%, #C8F04B 60%, #a8d43b 80%, #C8F04B 100%)',
               backgroundSize: '200% auto',
@@ -59,7 +59,7 @@ export default function SaleBanner() {
               />
             </span>
 
-            <p className="min-w-0 flex-1 text-center text-[10px] sm:text-[11px] leading-tight font-semibold text-bg-base tracking-wide whitespace-nowrap truncate">
+            <p className="min-w-0 flex-1 text-center text-[9px] xs:text-[10px] sm:text-[11px] leading-tight font-semibold text-bg-base tracking-wide whitespace-nowrap truncate">
               <span className="font-extrabold">LIMITED OFFER:</span>{' '}
               Build or redesign your site from{' '}
               <span

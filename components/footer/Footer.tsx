@@ -85,18 +85,6 @@ export default function Footer() {
                   We reply to every enquiry within 24 hours.
                 </span>
               </li>
-              <li className="flex items-start gap-2">
-                <span
-                  className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0"
-                  style={{ backgroundColor: 'var(--accent-primary)' }}
-                />
-                <span
-                  className="font-mono text-xs tracking-wide leading-relaxed"
-                  style={{ color: 'var(--text-muted)' }}
-                >
-                  GST / CIN: [pending]
-                </span>
-              </li>
             </ul>
 
           </div>
