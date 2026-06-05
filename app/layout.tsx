@@ -104,6 +104,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: '/Favicon.png',
+    shortcut: '/Favicon.png',
+    apple: '/Favicon.png',
+  },
 }
 
 // ── Global Organization Schema ────────────────────────────────────────────────
