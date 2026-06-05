@@ -3,6 +3,7 @@ import { DM_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider'
 import SiteChrome from '@/components/layout/SiteChrome'
+import JsonLd from '@/components/seo/JsonLd'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -35,21 +36,95 @@ export const viewport: Viewport = {
   themeColor: '#08090A',
 }
 
+const BASE_URL = 'https://www.qevn.in'
+
 export const metadata: Metadata = {
-  title: 'QEVN — AI Business Automation',
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: 'QEVN — AI Business Automation Agency',
+    template: '%s | QEVN',
+  },
   description:
-    'QEVN builds dedicated AI systems that handle your operations, sales, and workflows — so your team focuses on what matters.',
-  keywords: 'AI automation, multi-agent systems, AI calling agents, business automation, AI sales',
+    'QEVN builds custom AI systems that run your operations, sales, and workflows 24/7. Multi-agent systems, AI calling agents, workflow automation — custom-built, not SaaS.',
+  keywords: [
+    'AI automation agency',
+    'multi-agent AI systems',
+    'AI calling agents India',
+    'business process automation',
+    'AI sales automation',
+    'custom AI systems India',
+    'AI workflow automation',
+    'AI business automation',
+    'AI operations management',
+    'AI agency India',
+    'QEVN',
+  ],
+  authors: [{ name: 'QEVN', url: BASE_URL }],
+  creator: 'QEVN',
+  publisher: 'QEVN',
+  category: 'technology',
+  alternates: {
+    canonical: BASE_URL,
+  },
   openGraph: {
-    title: 'QEVN — AI Business Automation',
-    description: 'Your Business. Running Itself.',
     type: 'website',
+    locale: 'en_IN',
+    url: BASE_URL,
+    siteName: 'QEVN',
+    title: 'QEVN — AI Business Automation Agency',
+    description:
+      'Your Business. Running Itself. Custom AI systems for operations, sales, and workflows — built specifically for your business.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'QEVN — Your Business. Running Itself.',
+        type: 'image/png',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'QEVN — AI Business Automation',
-    description: 'Your Business. Running Itself.',
+    site: '@qevn',
+    creator: '@qevn',
+    title: 'QEVN — AI Business Automation Agency',
+    description:
+      'Your Business. Running Itself. Custom AI systems for operations, sales, and workflows.',
+    images: ['/og-image.png'],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+}
+
+// ── Global Organization Schema ────────────────────────────────────────────────
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'QEVN',
+  url: BASE_URL,
+  logo: `${BASE_URL}/logo-web.png`,
+  description:
+    'QEVN builds custom AI systems — multi-agent workflows, AI calling agents, and intelligent automation — engineered specifically for each client\'s operations.',
+  foundingDate: '2024',
+  areaServed: 'Worldwide',
+  serviceType: [
+    'AI Business Automation',
+    'Multi-Agent AI Systems',
+    'AI Calling Agents',
+    'Workflow Automation',
+    'Custom AI Software Development',
+  ],
+  sameAs: [],
 }
 
 export default function RootLayout({
@@ -62,6 +137,9 @@ export default function RootLayout({
       lang="en"
       className={`${dmSans.variable} ${jetbrainsMono.variable} ${cabinetGrotesk.variable}`}
     >
+      <head>
+        <JsonLd schema={organizationSchema} />
+      </head>
       <body className="bg-bg-base text-text-primary antialiased">
         <SmoothScrollProvider>
           <SiteChrome>{children}</SiteChrome>

@@ -1,10 +1,28 @@
 import InnerPageLayout from '@/components/layout/InnerPageLayout'
 import Metrics from '@/components/sections/Metrics'
 import CtaSection from '@/components/sections/CtaSection'
+import type { Metadata } from 'next'
+import { staticPageSeo } from '@/lib/seoData'
 
-export const metadata = {
-  title: "Numbers Don't Lie — QEVN",
-  description: 'Proof points from QEVN deployments: cycle time, uptime, throughput, and custom builds.',
+const seo = staticPageSeo['numbers-dont-lie']
+
+export const metadata: Metadata = {
+  title: seo.title,
+  description: seo.description,
+  keywords: seo.keywords,
+  alternates: { canonical: 'https://www.qevn.in/numbers-dont-lie' },
+  openGraph: {
+    title: seo.title,
+    description: seo.description,
+    url: 'https://www.qevn.in/numbers-dont-lie',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: seo.title }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: seo.title,
+    description: seo.description,
+    images: ['/og-image.png'],
+  },
 }
 
 export default function NumbersDontLiePage() {

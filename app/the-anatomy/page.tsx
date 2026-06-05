@@ -1,10 +1,28 @@
 import InnerPageLayout from '@/components/layout/InnerPageLayout'
 import HowItWorks from '@/components/sections/HowItWorks'
 import CtaSection from '@/components/sections/CtaSection'
+import type { Metadata } from 'next'
+import { staticPageSeo } from '@/lib/seoData'
 
-export const metadata = {
-  title: 'The Anatomy — QEVN',
-  description: 'How QEVN diagnoses, builds, and operates your AI automation — three clear steps.',
+const seo = staticPageSeo['the-anatomy']
+
+export const metadata: Metadata = {
+  title: seo.title,
+  description: seo.description,
+  keywords: seo.keywords,
+  alternates: { canonical: 'https://www.qevn.in/the-anatomy' },
+  openGraph: {
+    title: seo.title,
+    description: seo.description,
+    url: 'https://www.qevn.in/the-anatomy',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: seo.title }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: seo.title,
+    description: seo.description,
+    images: ['/og-image.png'],
+  },
 }
 
 export default function TheAnatomyPage() {
