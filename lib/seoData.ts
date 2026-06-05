@@ -480,4 +480,16 @@ export const staticPageSeo: Record<string, PageSeoData> = {
       'QEVN blog',
     ],
   },
+  contact: {
+    title: 'Contact QEVN — Book an AI Automation Strategy Session | QEVN',
+    description:
+      'Get in touch with QEVN. Fill out our contact form or follow our social channels to learn how we replace manual operational friction with custom, automated AI systems.',
+    keywords: [
+      'contact QEVN',
+      'AI automation agency contact',
+      'book AI consultation India',
+      'QEVN email',
+      'AI business solutions consultation',
+    ],
+  },
 }

@@ -4,6 +4,7 @@ import './globals.css'
 import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider'
 import SiteChrome from '@/components/layout/SiteChrome'
 import JsonLd from '@/components/seo/JsonLd'
+import FloatingWidget from '@/components/ui/FloatingWidget'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -132,6 +133,8 @@ const organizationSchema = {
   sameAs: [
     'https://www.linkedin.com/company/qevn/',
     'https://www.instagram.com/qevn.in?igsh=ZHh6bXRwZmpjaDN6',
+    'https://x.com/qevnhq',
+    'https://youtube.com/@qevn',
   ],
 }
 
@@ -151,6 +154,7 @@ export default function RootLayout({
       <body className="bg-bg-base text-text-primary antialiased">
         <SmoothScrollProvider>
           <SiteChrome>{children}</SiteChrome>
+          <FloatingWidget />
         </SmoothScrollProvider>
       </body>
     </html>

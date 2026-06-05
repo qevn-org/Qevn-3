@@ -88,7 +88,7 @@ export default function Navbar() {
     ]
     return (
       <div className="max-h-[min(70vh,640px)] overflow-y-auto overscroll-y-contain">
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(260px,300px)] gap-0 min-h-[360px] items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1.2fr)_minmax(220px,240px)_minmax(240px,260px)] gap-0 min-h-[360px] items-stretch">
         {/* Col 1 – services 1-5 */}
         {cols.map((col, ci) => (
           <div
@@ -180,7 +180,7 @@ export default function Navbar() {
           </div>
           <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
             <Link
-              href="/offer"
+              href="/#roi"
               onClick={() => setActiveMega(null)}
               className="flex items-center gap-2 rounded-xl p-3 transition-all duration-200"
               style={{
@@ -189,20 +189,105 @@ export default function Navbar() {
               }}
             >
               <span className="shrink-0" style={{ color: 'var(--accent-primary)' }}>
-                <InlineIcon name="gift" size={20} />
+                <InlineIcon name="calculator" size={20} />
               </span>
               <div>
                 <p
                   className="text-xs font-bold"
                   style={{ color: 'var(--accent-primary)' }}
                 >
-                  Build or redesign — ₹4,999/-
+                  Interactive ROI Calculator
                 </p>
                 <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>
-                  All currencies on the offer page →
+                  Calculate your custom automation savings →
                 </p>
               </div>
             </Link>
+          </div>
+        </div>
+
+        {/* Connect With Us Spotlight */}
+        <div
+          className="py-6 px-6 border-l"
+          style={{ 
+            borderColor: 'rgba(255,255,255,0.06)',
+            background: 'rgba(255,255,255,0.01)'
+          }}
+        >
+          <p
+            className="mb-4 text-[10px] font-semibold uppercase tracking-[0.12em] flex items-center gap-1.5"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            Connect With Us
+          </p>
+          <div className="flex flex-col gap-3">
+            <a
+              href="https://www.linkedin.com/company/qevn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-accent-primary/20 hover:bg-white/[0.03]"
+              style={{ background: 'rgba(255,255,255,0.01)' }}
+            >
+              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-accent-primary" style={{ color: 'var(--text-muted)' }}>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </span>
+              <div>
+                <p className="text-xs font-semibold text-text-primary group-hover:text-accent-primary transition-colors">
+                  LinkedIn
+                </p>
+                <p className="text-[11px] leading-snug mt-1 text-text-muted">
+                  AI insights, case studies, and company updates
+                </p>
+              </div>
+            </a>
+            
+            <a
+              href="https://www.instagram.com/qevn.in?igsh=ZHh6bXRwZmpjaDN6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-accent-primary/20 hover:bg-white/[0.03]"
+              style={{ background: 'rgba(255,255,255,0.01)' }}
+            >
+              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-accent-primary" style={{ color: 'var(--text-muted)' }}>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </span>
+              <div>
+                <p className="text-xs font-semibold text-text-primary group-hover:text-accent-primary transition-colors">
+                  Instagram
+                </p>
+                <p className="text-[11px] leading-snug mt-1 text-text-muted">
+                  Behind the scenes and product highlights
+                </p>
+              </div>
+            </a>
+            
+            <a
+              href="https://youtube.com/@qevn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-accent-primary/20 hover:bg-white/[0.03]"
+              style={{ background: 'rgba(255,255,255,0.01)' }}
+            >
+              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-accent-primary" style={{ color: 'var(--text-muted)' }}>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.002 3.002 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.553 9.388.553 9.388.553s7.518 0 9.388-.553a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </span>
+              <div>
+                <p className="text-xs font-semibold text-text-primary group-hover:text-accent-primary transition-colors">
+                  YouTube
+                </p>
+                <p className="text-[11px] leading-snug mt-1 text-text-muted">
+                  Automation demos and implementation guides
+                </p>
+              </div>
+            </a>
           </div>
         </div>
         </div>
@@ -215,7 +300,7 @@ export default function Navbar() {
     const cols = [industries.slice(0, half), industries.slice(half)]
     return (
       <div className="max-h-[min(70vh,680px)] overflow-y-auto overscroll-y-contain">
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(248px,280px)] gap-0 min-h-[400px] items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1.2fr)_minmax(220px,240px)_minmax(240px,260px)] gap-0 min-h-[400px] items-stretch">
         {cols.map((col, ci) => (
           <div
             key={ci}
@@ -307,6 +392,91 @@ export default function Navbar() {
             >
               Let's talk anyway →
             </button>
+          </div>
+        </div>
+
+        {/* Connect With Us Spotlight */}
+        <div
+          className="py-6 px-6 border-l"
+          style={{ 
+            borderColor: 'rgba(255,255,255,0.06)',
+            background: 'rgba(255,255,255,0.01)'
+          }}
+        >
+          <p
+            className="mb-4 text-[10px] font-semibold uppercase tracking-[0.12em] flex items-center gap-1.5"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            Connect With Us
+          </p>
+          <div className="flex flex-col gap-3">
+            <a
+              href="https://www.linkedin.com/company/qevn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-accent-primary/20 hover:bg-white/[0.03]"
+              style={{ background: 'rgba(255,255,255,0.01)' }}
+            >
+              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-accent-primary" style={{ color: 'var(--text-muted)' }}>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </span>
+              <div>
+                <p className="text-xs font-semibold text-text-primary group-hover:text-accent-primary transition-colors">
+                  LinkedIn
+                </p>
+                <p className="text-[11px] leading-snug mt-1 text-text-muted">
+                  AI insights, case studies, and company updates
+                </p>
+              </div>
+            </a>
+            
+            <a
+              href="https://www.instagram.com/qevn.in?igsh=ZHh6bXRwZmpjaDN6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-accent-primary/20 hover:bg-white/[0.03]"
+              style={{ background: 'rgba(255,255,255,0.01)' }}
+            >
+              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-accent-primary" style={{ color: 'var(--text-muted)' }}>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </span>
+              <div>
+                <p className="text-xs font-semibold text-text-primary group-hover:text-accent-primary transition-colors">
+                  Instagram
+                </p>
+                <p className="text-[11px] leading-snug mt-1 text-text-muted">
+                  Behind the scenes and product highlights
+                </p>
+              </div>
+            </a>
+            
+            <a
+              href="https://youtube.com/@qevn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-accent-primary/20 hover:bg-white/[0.03]"
+              style={{ background: 'rgba(255,255,255,0.01)' }}
+            >
+              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-accent-primary" style={{ color: 'var(--text-muted)' }}>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.002 3.002 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.553 9.388.553 9.388.553s7.518 0 9.388-.553a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </span>
+              <div>
+                <p className="text-xs font-semibold text-text-primary group-hover:text-accent-primary transition-colors">
+                  YouTube
+                </p>
+                <p className="text-[11px] leading-snug mt-1 text-text-muted">
+                  Automation demos and implementation guides
+                </p>
+              </div>
+            </a>
           </div>
         </div>
         </div>
@@ -488,9 +658,9 @@ export default function Navbar() {
         transition={{ duration: 0.4, ease: 'easeInOut' }}
         style={{ pointerEvents: mobileOpen ? 'all' : 'none', top: `${bannerHeight}px` }}
       >
-        {/* Sale banner CTA in mobile too */}
+        {/* Sale banner CTA in mobile replaced with ROI Calculator */}
         <Link
-          href="/offer"
+          href="/#roi"
           onClick={() => setMobileOpen(false)}
           className="mb-6 flex items-center justify-center gap-2 rounded-xl p-3 text-sm font-bold"
           style={{
@@ -499,8 +669,8 @@ export default function Navbar() {
             color: 'var(--accent-primary)',
           }}
         >
-          <InlineIcon name="gift" size={18} />
-          <span>Build or redesign — ₹4,999/- — Offer & currencies</span>
+          <InlineIcon name="calculator" size={18} />
+          <span>Calculate Your AI Automation ROI →</span>
         </Link>
 
         <nav className="flex flex-col gap-5 w-full">

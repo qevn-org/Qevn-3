@@ -14,12 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${BASE}/offer`,
-      lastModified: NOW,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
       url: `${BASE}/the-anatomy`,
       lastModified: NOW,
       changeFrequency: 'monthly',
@@ -42,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: NOW,
       changeFrequency: 'weekly',
       priority: 0.6,
+    },
+    {
+      url: `${BASE}/contact`,
+      lastModified: NOW,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
   ]
 
