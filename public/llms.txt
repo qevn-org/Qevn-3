@@ -1,0 +1,46 @@
+# QEVN — AI Business Automation Agency
+
+Custom-engineered AI systems built specifically to run your B2B operations, sales pipelines, and daily workflows 24/7. Not generic SaaS — bespoke, self-hosted, and client-owned infrastructure.
+
+## Core Capabilities
+- **Multi-Agent Systems**: Coordinated autonomous AI agents executing complex multi-step workflows without human handoffs.
+- **AI Calling Agents**: Human-grade inbound and outbound voice conversation agents for lead qualification, appointment booking, and customer success.
+- **Operations Autopilot**: Managed operational AI layer handling reporting, task routing, exception checking, and calendar syncs.
+- **Sales & Marketing Operations**: End-to-end revenue pipeline automation, including automated lead scoring, CRM sync, and smart outreach.
+
+## Main Navigation & Core Pages
+- [Home Page](https://www.qevn.in/): Overview, Interactive ROI Calculator, Client Case-Study metrics, and booking.
+- [The Anatomy](https://www.qevn.in/the-anatomy): Detailed engineering principles and structural architecture of QEVN AI systems.
+- [Numbers Don't Lie](https://www.qevn.in/numbers-dont-lie): Core performance statistics, case study analytics, and operational ROI proofs.
+- [QEVN Decoded](https://www.qevn.in/qevn-decoded): Technical execution breakdown, implementation processes, FAQs, and developer documentation.
+- [The QEVN Files](https://www.qevn.in/the-qevn-files): Insights, newsletters, and playbooks direct from the B2B automation trenches.
+- [Contact Consultation](https://www.qevn.in/contact): Project custom specifications, inquiries, and meeting requests.
+
+## Specialized Solutions (Services)
+- [Multi-Agent AI Systems](https://www.qevn.in/services/multi-agent-ai-systems): Orchestrating specialized agents to eliminate manual back-office tasks.
+- [AI Calling Agents](https://www.qevn.in/services/ai-calling-agents): 24/7 automated phone calls with zero lag and human-grade natural language interfaces.
+- [AI Business Auto-Pilot](https://www.qevn.in/services/ai-business-auto-pilot): Custom operations control panels and automation loops.
+- [AI Marketing & Sales Ops](https://www.qevn.in/services/ai-marketing-sales-ops): Autonomous CRM pipeline syncing and outbound automation.
+- [Leads to Closure](https://www.qevn.in/services/leads-to-closure): Lead nurturing, follow-ups, and sales cycle acceleration up to 60%.
+- [Custom Software Development](https://www.qevn.in/services/custom-software-development): Bespoke web apps, integrations, and operational tools designed to client specification.
+- [AI Chatbots](https://www.qevn.in/services/ai-chatbots): Conversational assistants for WhatsApp, Slack, web, and internal portals.
+- [AI Appointment Booking](https://www.qevn.in/services/ai-appointment-booking): Autonomous calendar management, booking confirmation, and reminder flows.
+- [AI Lead Generation Systems](https://www.qevn.in/services/lead-generation-systems): Prospecting engines scraping, screening, and delivering qualified targets.
+- [Workflow Automation](https://www.qevn.in/services/workflow-automation): High-fidelity API and database integration.
+
+## Target Industries
+Bespoke operational systems designed for industry-specific constraints:
+- [Real Estate](https://www.qevn.in/industries/real-estate): Agent booking, listing matching, and lead follow-up.
+- [Healthcare](https://www.qevn.in/industries/healthcare): Patient intake, scheduling, and billing admin automation.
+- [Retail & E-Commerce](https://www.qevn.in/industries/retail): Support chatbot integration, order tracking, and inventory flows.
+- [Logistics & Supply Chain](https://www.qevn.in/industries/logistics): Dispatch scheduling, exceptions tracking, and vendor syncs.
+- [Finance & FinTech](https://www.qevn.in/industries/finance): Reporting automation, KYC/AML processing, and compliance checks.
+- [SaaS & Tech Companies](https://www.qevn.in/industries/saas): Customer success funnels, product onboarding, and churn mitigation.
+- [Hospitality & Travel](https://www.qevn.in/industries/hospitality): Guest inquiries, booking updates, and staff allocations.
+- [Legal Firms](https://www.qevn.in/industries/legal): Intake files, contract draft extraction, and billing automation.
+- [Recruitment & HR](https://www.qevn.in/industries/recruitment): Candidate sourcing pipelines, resume parsing, and interview scheduling.
+- [EdTech & Education](https://www.qevn.in/industries/education): Admission flow updates, course reminders, and queries handling.
+- [Manufacturing](https://www.qevn.in/industries/manufacturing): Supplier coordination and production status schedules.
+- [Insurance](https://www.qevn.in/industries/insurance): Claims filing and claim validation routing.
+- [Media & Entertainment](https://www.qevn.in/industries/media-entertainment): Content indexing and copyright metadata audits.
+- [Construction](https://www.qevn.in/industries/construction): Timeline tracking, procurement coordination, and contractor alerts.
