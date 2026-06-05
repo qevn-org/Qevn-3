@@ -8,6 +8,7 @@ import InlineIcon from '@/components/ui/InlineIcon'
 import Footer from '@/components/footer/Footer'
 import Button from '@/components/ui/Button'
 import type { ServiceData, IndustryData } from '@/lib/data'
+import { getIndustryHeroMedia } from '@/lib/industryHeroMedia'
 
 interface InnerPageLayoutProps {
   children: React.ReactNode
@@ -288,8 +289,29 @@ export function ProcessSection({
 
 /* ─── Industry Page Hero ─── */
 export function IndustryHero({ industry }: { industry: IndustryData }) {
+  const media = getIndustryHeroMedia(industry.slug, industry.title)
+
   return (
     <section className="relative overflow-hidden pb-20 lg:pb-28 pt-[calc(var(--layout-chrome-top,104px)+2.25rem)] lg:pt-[calc(var(--layout-chrome-top,104px)+3.5rem)]">
+      {/* Background visual asset */}
+      <div className="absolute inset-0 z-0 opacity-15 select-none pointer-events-none" aria-hidden="true">
+        <img
+          src={media.posterSrc}
+          alt=""
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = media.fallbackSrc
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(8,9,10,0.3) 0%, rgba(8,9,10,0.8) 75%, rgba(8,9,10,0.98) 100%)',
+          }}
+        />
+      </div>
+
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[500px] pointer-events-none"
         style={{
