@@ -124,7 +124,10 @@ const organizationSchema = {
     'Workflow Automation',
     'Custom AI Software Development',
   ],
-  sameAs: [],
+  sameAs: [
+    'https://www.linkedin.com/company/qevn/',
+    'https://www.instagram.com/qevn.in?igsh=ZHh6bXRwZmpjaDN6',
+  ],
 }
 
 export default function RootLayout({
