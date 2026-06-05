@@ -10,7 +10,7 @@ const dmSans = DM_Sans({
   subsets: ['latin'],
   variable: '--font-dm-sans',
   display: 'swap',
-  weight: ['300', '400', '500', '600'],
+  weight: ['400', '500', '600'],
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -18,10 +18,10 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains',
   display: 'swap',
   weight: ['400', '500'],
+  preload: false,
 })
 
-// Cabinet Grotesk via local or CDN — we'll load via @font-face in CSS
-// Using a close Google substitute: Plus Jakarta Sans for display
+// Cabinet Grotesk substitute: Plus Jakarta Sans for display
 import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const cabinetGrotesk = Plus_Jakarta_Sans({
@@ -29,6 +29,7 @@ const cabinetGrotesk = Plus_Jakarta_Sans({
   variable: '--font-cabinet',
   display: 'swap',
   weight: ['700', '800'],
+  preload: false,
 })
 
 export const viewport: Viewport = {

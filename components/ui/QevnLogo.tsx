@@ -15,6 +15,7 @@ export default function QevnLogo({ className = '', heightClass = 'h-8 md:h-[38px
         height={45}
         className={`${heightClass} w-auto object-contain transition-all duration-300 hover:opacity-90 hover:scale-[1.01] active:scale-[0.98]`}
         priority
+        unoptimized
       />
     </span>
   )
