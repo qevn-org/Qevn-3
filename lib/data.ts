@@ -60,9 +60,6 @@ export const services: ServiceData[] = [
       { step: '02', title: 'Agent Engineering', description: 'Custom agents are built, trained, and calibrated for your specific business logic, tools, and data sources.' },
       { step: '03', title: 'Deployment & Evolution', description: 'Agents go live with monitoring, then continuously learn and improve based on real operational data.' },
     ],
-    videoSrc:
-      'https://videos.pexels.com/video-files/13522186/13522186-uhd_2560_1440_25fps.mp4',
-    videoAriaLabel: 'Video of a developer working on a laptop for the Multi-Agent AI Systems service',
   },
   {
     number: '02',
