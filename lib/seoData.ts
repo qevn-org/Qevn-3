@@ -469,15 +469,16 @@ export const staticPageSeo: Record<string, PageSeoData> = {
     ],
   },
   'the-qevn-files': {
-    title: 'The QEVN Files — AI Automation Case Studies & Playbooks | QEVN',
+    title: 'About QEVN — Our Mission, Vision & Core Philosophy | QEVN',
     description:
-      'Field notes, case studies, and playbooks from inside the AI automation trenches. Real deployments, real results, no fluff.',
+      'We exist to offer businesses a simpler operating model powered by AI. Read our manifesto, mission, vision, and core USPs of zero-friction automation.',
     keywords: [
-      'AI automation case studies',
-      'AI automation blog India',
-      'AI implementation playbooks',
-      'AI business case studies',
-      'QEVN blog',
+      'about QEVN',
+      'AI automation agency',
+      'business process automation',
+      'QEVN manifesto',
+      'QEVN mission',
+      'QEVN vision',
     ],
   },
   contact: {
