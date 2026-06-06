@@ -79,7 +79,7 @@ export default function DecodedClient() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.22 }}
-            className="text-xs font-mono tracking-wider uppercase text-white/50 mb-10 max-w-md mx-auto py-2.5 px-4 rounded-xl bg-white/[0.02] border border-white/[0.05]"
+            className="text-xs font-mono tracking-wider uppercase text-white/50 mb-10 max-w-md mx-auto py-2.5 px-4 rounded-xl bg-white/[0.02] border border-white/[0.05] text-center"
           >
             Most businesses know AI is important. Very few know how to actually use it. This page explains everything in plain English.
           </motion.div>
@@ -212,7 +212,7 @@ export default function DecodedClient() {
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <motion.div 
             {...fadeInUp}
-            className="mb-16 text-center lg:text-left"
+            className="mb-16"
           >
             <span className="font-mono text-xs tracking-[0.18em] uppercase mb-4 block" style={{ color: '#B5ED68' }}>
               The Engine
@@ -304,7 +304,7 @@ export default function DecodedClient() {
 
               <motion.div 
                 {...fadeInUp}
-                className="grid grid-cols-2 gap-4 text-xs font-mono"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono"
               >
                 {[
                   { title: 'Native Pronunciation', desc: 'No robotic text-to-speech accent delays.' },
@@ -335,7 +335,7 @@ export default function DecodedClient() {
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <motion.div 
             {...fadeInUp}
-            className="mb-16 text-center lg:text-left"
+            className="mb-16"
           >
             <span className="font-mono text-xs tracking-[0.18em] uppercase mb-4 block" style={{ color: '#B5ED68' }}>
               Case Studies
@@ -409,7 +409,7 @@ export default function DecodedClient() {
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <motion.div 
             {...fadeInUp}
-            className="mb-16 text-center"
+            className="mb-16"
           >
             <span className="font-mono text-xs tracking-[0.18em] uppercase mb-4 block" style={{ color: '#B5ED68' }}>
               Proof
@@ -490,7 +490,7 @@ export default function DecodedClient() {
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <motion.div 
             {...fadeInUp}
-            className="mb-16 text-center"
+            className="mb-16"
           >
             <span className="font-mono text-xs tracking-[0.18em] uppercase mb-4 block" style={{ color: '#B5ED68' }}>
               Why Us

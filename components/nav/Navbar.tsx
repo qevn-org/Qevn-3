@@ -489,7 +489,7 @@ export default function Navbar() {
       <motion.header
         className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-bg-base/85 backdrop-blur-xl border-b border-white/[0.06]'
+            ? 'bg-[#08090A] border-b border-white/[0.06] shadow-lg'
             : 'bg-transparent'
         }`}
         style={{ top: `${bannerHeight}px` }}
