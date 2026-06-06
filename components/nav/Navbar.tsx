@@ -94,11 +94,11 @@ export default function Navbar() {
           <div
             key={ci}
             className="py-6 px-6 border-r"
-            style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+            style={{ borderColor: 'rgba(255,255,255,0.05)' }}
           >
             <p
               className="mb-3 text-[10px] font-semibold uppercase tracking-[0.12em]"
-              style={{ color: 'var(--text-muted)' }}
+              style={{ color: 'rgba(255,255,255,0.65)' }}
             >
               {ci === 0 ? 'AI Automation' : 'Build & Scale'}
             </p>
@@ -112,20 +112,20 @@ export default function Navbar() {
                   >
                     <span
                       className="mt-0.5 shrink-0 opacity-90"
-                      style={{ color: 'var(--accent-primary)' }}
+                      style={{ color: '#B5ED68' }}
                     >
                       <InlineIcon name={serviceSlugIcon[s.slug] ?? 'layout-grid'} size={18} />
                     </span>
                     <span className="flex flex-col">
                       <span
-                        className="text-sm font-medium transition-colors group-hover:text-text-primary"
-                        style={{ color: 'var(--text-primary)' }}
+                        className="text-sm font-medium transition-colors group-hover:text-white"
+                        style={{ color: '#FFFFFF' }}
                       >
                         {s.title}
                       </span>
                       <span
                         className="text-xs leading-snug mt-0.5 line-clamp-1"
-                        style={{ color: 'var(--text-muted)' }}
+                        style={{ color: 'rgba(255,255,255,0.65)' }}
                       >
                         {s.description.split('.')[0]}
                       </span>
@@ -140,13 +140,13 @@ export default function Navbar() {
         {/* Featured spotlight */}
         <div
           className="py-6 px-6"
-          style={{ background: 'rgba(200,240,75,0.03)' }}
+          style={{ background: '#0A0A0A' }}
         >
           <p
             className="mb-3 text-[10px] font-semibold uppercase tracking-[0.12em] flex items-center gap-1.5"
-            style={{ color: 'var(--accent-primary)' }}
+            style={{ color: '#B5ED68' }}
           >
-            <InlineIcon name="sparkles" size={12} color="var(--accent-primary)" />
+            <InlineIcon name="sparkles" size={12} color="#B5ED68" />
             Most Popular
           </p>
           <div className="flex flex-col gap-2">
@@ -155,50 +155,50 @@ export default function Navbar() {
                 key={s.slug}
                 href={`/services/${s.slug}`}
                 onClick={() => setActiveMega(null)}
-                className="group flex items-center gap-3 rounded-xl border p-3 transition-all duration-200 hover:border-accent-primary/40 hover:bg-white/[0.03]"
+                className="group flex items-center gap-3 rounded-xl border p-3 transition-all duration-200 hover:border-[#B5ED68]/40 hover:bg-white/[0.03]"
                 style={{
-                  borderColor: 'rgba(200,240,75,0.15)',
-                  background: 'rgba(200,240,75,0.04)',
+                  borderColor: 'rgba(181,237,104,0.15)',
+                  background: '#050505',
                 }}
               >
-                <span className="shrink-0 opacity-90" style={{ color: 'var(--accent-primary)' }}>
+                <span className="shrink-0 opacity-90" style={{ color: '#B5ED68' }}>
                   <InlineIcon name={serviceSlugIcon[s.slug] ?? 'layout-grid'} size={20} />
                 </span>
                 <div>
                   <p
                     className="text-xs font-semibold"
-                    style={{ color: 'var(--text-primary)' }}
+                    style={{ color: '#FFFFFF' }}
                   >
                     {s.title}
                   </p>
-                  <p className="text-[11px] mt-0.5" style={{ color: 'var(--text-muted)' }}>
+                  <p className="text-[11px] mt-0.5" style={{ color: 'rgba(255,255,255,0.65)' }}>
                     {s.number}
                   </p>
                 </div>
               </Link>
             ))}
           </div>
-          <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
             <Link
               href="/#roi"
               onClick={() => setActiveMega(null)}
-              className="flex items-center gap-2 rounded-xl p-3 transition-all duration-200"
+              className="flex items-center gap-2 rounded-xl p-3 transition-all duration-200 hover:border-[#B5ED68]/40 hover:bg-white/[0.03]"
               style={{
-                background: 'linear-gradient(135deg, rgba(200,240,75,0.12), rgba(200,240,75,0.04))',
-                border: '1px solid rgba(200,240,75,0.25)',
+                background: '#050505',
+                border: '1px solid rgba(181,237,104,0.15)',
               }}
             >
-              <span className="shrink-0" style={{ color: 'var(--accent-primary)' }}>
+              <span className="shrink-0" style={{ color: '#B5ED68' }}>
                 <InlineIcon name="calculator" size={20} />
               </span>
               <div>
                 <p
                   className="text-xs font-bold"
-                  style={{ color: 'var(--accent-primary)' }}
+                  style={{ color: '#B5ED68' }}
                 >
                   Interactive ROI Calculator
                 </p>
-                <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>
+                <p className="text-[11px]" style={{ color: 'rgba(255,255,255,0.65)' }}>
                   Calculate your custom automation savings →
                 </p>
               </div>
@@ -210,13 +210,13 @@ export default function Navbar() {
         <div
           className="py-6 px-6 border-l"
           style={{ 
-            borderColor: 'rgba(255,255,255,0.06)',
-            background: 'rgba(255,255,255,0.01)'
+            borderColor: 'rgba(255,255,255,0.05)',
+            background: '#050505'
           }}
         >
           <p
             className="mb-4 text-[10px] font-semibold uppercase tracking-[0.12em] flex items-center gap-1.5"
-            style={{ color: 'var(--text-primary)' }}
+            style={{ color: '#FFFFFF' }}
           >
             Connect With Us
           </p>
@@ -225,19 +225,19 @@ export default function Navbar() {
               href="https://www.linkedin.com/company/qevn/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-accent-primary/20 hover:bg-white/[0.03]"
-              style={{ background: 'rgba(255,255,255,0.01)' }}
+              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
+              style={{ background: '#0A0A0A' }}
             >
-              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-accent-primary" style={{ color: 'var(--text-muted)' }}>
+              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-[#B5ED68]" style={{ color: 'rgba(255,255,255,0.65)' }}>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
               </span>
               <div>
-                <p className="text-xs font-semibold text-text-primary group-hover:text-accent-primary transition-colors">
+                <p className="text-xs font-semibold text-white group-hover:text-[#B5ED68] transition-colors">
                   LinkedIn
                 </p>
-                <p className="text-[11px] leading-snug mt-1 text-text-muted">
+                <p className="text-[11px] leading-snug mt-1 text-white/65" style={{ color: 'rgba(255,255,255,0.65)' }}>
                   AI insights, case studies, and company updates
                 </p>
               </div>
@@ -247,10 +247,10 @@ export default function Navbar() {
               href="https://www.instagram.com/qevn.in?igsh=ZHh6bXRwZmpjaDN6"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-accent-primary/20 hover:bg-white/[0.03]"
-              style={{ background: 'rgba(255,255,255,0.01)' }}
+              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
+              style={{ background: '#0A0A0A' }}
             >
-              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-accent-primary" style={{ color: 'var(--text-muted)' }}>
+              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-[#B5ED68]" style={{ color: 'rgba(255,255,255,0.65)' }}>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -258,10 +258,10 @@ export default function Navbar() {
                 </svg>
               </span>
               <div>
-                <p className="text-xs font-semibold text-text-primary group-hover:text-accent-primary transition-colors">
+                <p className="text-xs font-semibold text-white group-hover:text-[#B5ED68] transition-colors">
                   Instagram
                 </p>
-                <p className="text-[11px] leading-snug mt-1 text-text-muted">
+                <p className="text-[11px] leading-snug mt-1 text-white/65" style={{ color: 'rgba(255,255,255,0.65)' }}>
                   Behind the scenes and product highlights
                 </p>
               </div>
@@ -271,19 +271,19 @@ export default function Navbar() {
               href="https://youtube.com/@qevn"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-accent-primary/20 hover:bg-white/[0.03]"
-              style={{ background: 'rgba(255,255,255,0.01)' }}
+              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
+              style={{ background: '#0A0A0A' }}
             >
-              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-accent-primary" style={{ color: 'var(--text-muted)' }}>
+              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-[#B5ED68]" style={{ color: 'rgba(255,255,255,0.65)' }}>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                   <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.002 3.002 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.553 9.388.553 9.388.553s7.518 0 9.388-.553a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
               </span>
               <div>
-                <p className="text-xs font-semibold text-text-primary group-hover:text-accent-primary transition-colors">
+                <p className="text-xs font-semibold text-white group-hover:text-[#B5ED68] transition-colors">
                   YouTube
                 </p>
-                <p className="text-[11px] leading-snug mt-1 text-text-muted">
+                <p className="text-[11px] leading-snug mt-1 text-white/65" style={{ color: 'rgba(255,255,255,0.65)' }}>
                   Automation demos and implementation guides
                 </p>
               </div>
@@ -305,11 +305,11 @@ export default function Navbar() {
           <div
             key={ci}
             className="py-6 px-6 border-r"
-            style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+            style={{ borderColor: 'rgba(255,255,255,0.05)' }}
           >
             <p
               className="mb-3 text-[10px] font-semibold uppercase tracking-[0.12em]"
-              style={{ color: 'var(--text-muted)' }}
+              style={{ color: 'rgba(255,255,255,0.65)' }}
             >
               {ci === 0 ? 'Industries A–K' : 'Industries L–Z'}
             </p>
@@ -321,12 +321,12 @@ export default function Navbar() {
                     onClick={() => setActiveMega(null)}
                     className="group flex items-center gap-2 rounded-lg px-2.5 py-2 transition-all duration-150 hover:bg-white/[0.04]"
                   >
-                    <span className="shrink-0 opacity-85" style={{ color: 'var(--accent-secondary)' }}>
-                      <InlineIcon name={industrySlugIcon[ind.slug] ?? 'building'} size={15} color="var(--accent-secondary)" />
+                    <span className="shrink-0 opacity-85" style={{ color: '#B5ED68' }}>
+                      <InlineIcon name={industrySlugIcon[ind.slug] ?? 'building'} size={15} color="#B5ED68" />
                     </span>
                     <span
-                      className="text-xs font-medium transition-colors group-hover:text-text-primary"
-                      style={{ color: 'var(--text-muted)' }}
+                      className="text-xs font-medium transition-colors group-hover:text-white"
+                      style={{ color: 'rgba(255,255,255,0.65)' }}
                     >
                       {ind.title}
                     </span>
@@ -340,13 +340,13 @@ export default function Navbar() {
         {/* Featured industries */}
         <div
           className="py-6 px-6"
-          style={{ background: 'rgba(75,139,240,0.03)' }}
+          style={{ background: '#0A0A0A' }}
         >
           <p
             className="mb-3 text-[10px] font-semibold uppercase tracking-[0.12em] flex items-center gap-1.5"
-            style={{ color: 'var(--accent-secondary)' }}
+            style={{ color: '#B5ED68' }}
           >
-            <InlineIcon name="sparkles" size={12} color="var(--accent-secondary)" />
+            <InlineIcon name="sparkles" size={12} color="#B5ED68" />
             Top Industries
           </p>
           <div className="flex flex-col gap-2">
@@ -355,31 +355,31 @@ export default function Navbar() {
                 key={ind.slug}
                 href={`/industries/${ind.slug}`}
                 onClick={() => setActiveMega(null)}
-                className="group flex items-center gap-3 rounded-xl border p-3 transition-all duration-200 hover:border-accent-secondary/40"
+                className="group flex items-center gap-3 rounded-xl border p-3 transition-all duration-200 hover:border-[#B5ED68]/40"
                 style={{
-                  borderColor: 'rgba(75,139,240,0.15)',
-                  background: 'rgba(75,139,240,0.04)',
+                  borderColor: 'rgba(181,237,104,0.15)',
+                  background: '#050505',
                 }}
               >
-                <span className="shrink-0 opacity-85" style={{ color: 'var(--accent-secondary)' }}>
-                  <InlineIcon name={industrySlugIcon[ind.slug] ?? 'building'} size={20} color="var(--accent-secondary)" />
+                <span className="shrink-0 opacity-85" style={{ color: '#B5ED68' }}>
+                  <InlineIcon name={industrySlugIcon[ind.slug] ?? 'building'} size={20} color="#B5ED68" />
                 </span>
                 <div>
                   <p
                     className="text-xs font-semibold"
-                    style={{ color: 'var(--text-primary)' }}
+                    style={{ color: '#FFFFFF' }}
                   >
                     {ind.title}
                   </p>
-                  <p className="text-[11px] mt-0.5 line-clamp-1" style={{ color: 'var(--text-muted)' }}>
+                  <p className="text-[11px] mt-0.5 line-clamp-1" style={{ color: 'rgba(255,255,255,0.65)' }}>
                     {ind.headline.replace('AI for ', '').replace('AI Automation for ', '')}
                   </p>
                 </div>
               </Link>
             ))}
           </div>
-          <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-            <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
+          <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+            <p className="text-xs" style={{ color: 'rgba(255,255,255,0.65)' }}>
               Don't see your industry?
             </p>
             <button
@@ -388,7 +388,7 @@ export default function Navbar() {
                 window.open('https://calendly.com/hello-qevn/30min', '_blank')
               }}
               className="mt-2 text-xs font-semibold underline underline-offset-2"
-              style={{ color: 'var(--accent-primary)' }}
+              style={{ color: '#B5ED68' }}
             >
               Let's talk anyway →
             </button>
@@ -399,13 +399,13 @@ export default function Navbar() {
         <div
           className="py-6 px-6 border-l"
           style={{ 
-            borderColor: 'rgba(255,255,255,0.06)',
-            background: 'rgba(255,255,255,0.01)'
+            borderColor: 'rgba(255,255,255,0.05)',
+            background: '#050505'
           }}
         >
           <p
             className="mb-4 text-[10px] font-semibold uppercase tracking-[0.12em] flex items-center gap-1.5"
-            style={{ color: 'var(--text-primary)' }}
+            style={{ color: '#FFFFFF' }}
           >
             Connect With Us
           </p>
@@ -414,19 +414,19 @@ export default function Navbar() {
               href="https://www.linkedin.com/company/qevn/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-accent-primary/20 hover:bg-white/[0.03]"
-              style={{ background: 'rgba(255,255,255,0.01)' }}
+              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
+              style={{ background: '#0A0A0A' }}
             >
-              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-accent-primary" style={{ color: 'var(--text-muted)' }}>
+              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-[#B5ED68]" style={{ color: 'rgba(255,255,255,0.65)' }}>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
               </span>
               <div>
-                <p className="text-xs font-semibold text-text-primary group-hover:text-accent-primary transition-colors">
+                <p className="text-xs font-semibold text-white group-hover:text-[#B5ED68] transition-colors">
                   LinkedIn
                 </p>
-                <p className="text-[11px] leading-snug mt-1 text-text-muted">
+                <p className="text-[11px] leading-snug mt-1 text-white/65" style={{ color: 'rgba(255,255,255,0.65)' }}>
                   AI insights, case studies, and company updates
                 </p>
               </div>
@@ -436,10 +436,10 @@ export default function Navbar() {
               href="https://www.instagram.com/qevn.in?igsh=ZHh6bXRwZmpjaDN6"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-accent-primary/20 hover:bg-white/[0.03]"
-              style={{ background: 'rgba(255,255,255,0.01)' }}
+              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
+              style={{ background: '#0A0A0A' }}
             >
-              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-accent-primary" style={{ color: 'var(--text-muted)' }}>
+              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-[#B5ED68]" style={{ color: 'rgba(255,255,255,0.65)' }}>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -447,10 +447,10 @@ export default function Navbar() {
                 </svg>
               </span>
               <div>
-                <p className="text-xs font-semibold text-text-primary group-hover:text-accent-primary transition-colors">
+                <p className="text-xs font-semibold text-white group-hover:text-[#B5ED68] transition-colors">
                   Instagram
                 </p>
-                <p className="text-[11px] leading-snug mt-1 text-text-muted">
+                <p className="text-[11px] leading-snug mt-1 text-white/65" style={{ color: 'rgba(255,255,255,0.65)' }}>
                   Behind the scenes and product highlights
                 </p>
               </div>
@@ -460,19 +460,19 @@ export default function Navbar() {
               href="https://youtube.com/@qevn"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-accent-primary/20 hover:bg-white/[0.03]"
-              style={{ background: 'rgba(255,255,255,0.01)' }}
+              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
+              style={{ background: '#0A0A0A' }}
             >
-              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-accent-primary" style={{ color: 'var(--text-muted)' }}>
+              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-[#B5ED68]" style={{ color: 'rgba(255,255,255,0.65)' }}>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                   <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.002 3.002 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.553 9.388.553 9.388.553s7.518 0 9.388-.553a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
               </span>
               <div>
-                <p className="text-xs font-semibold text-text-primary group-hover:text-accent-primary transition-colors">
+                <p className="text-xs font-semibold text-white group-hover:text-[#B5ED68] transition-colors">
                   YouTube
                 </p>
-                <p className="text-[11px] leading-snug mt-1 text-text-muted">
+                <p className="text-[11px] leading-snug mt-1 text-white/65" style={{ color: 'rgba(255,255,255,0.65)' }}>
                   Automation demos and implementation guides
                 </p>
               </div>
@@ -608,9 +608,13 @@ export default function Navbar() {
               onMouseLeave={handleLeave}
               className="w-full border-b overflow-hidden"
               style={{
-                backgroundColor: 'var(--bg-elevated)',
+                backgroundColor: '#050505',
+                borderTop: '1px solid rgba(181,237,104,0.15)',
                 borderColor: 'rgba(255,255,255,0.07)',
-                boxShadow: '0 30px 60px rgba(0,0,0,0.5)',
+                boxShadow: '0 30px 80px rgba(0,0,0,0.75), 0 10px 30px rgba(0,0,0,0.5)',
+                opacity: 1,
+                backdropFilter: 'none',
+                WebkitBackdropFilter: 'none',
               }}
             >
               <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -624,9 +628,9 @@ export default function Navbar() {
               {/* Bottom bar inside panel */}
               <div
                 className="border-t px-6 lg:px-8 py-2.5 flex items-center justify-between max-w-7xl mx-auto"
-                style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+                style={{ borderColor: 'rgba(255,255,255,0.05)' }}
               >
-                <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                <p className="text-xs" style={{ color: 'rgba(255,255,255,0.65)' }}>
                   {activeMega === 'services'
                     ? `${services.length} specialized services to automate your business`
                     : `${industries.length} industries served globally`}
@@ -637,7 +641,7 @@ export default function Navbar() {
                     window.open('https://calendly.com/hello-qevn/30min', '_blank')
                   }}
                   className="text-xs font-semibold transition-colors hover:opacity-80"
-                  style={{ color: 'var(--accent-primary)' }}
+                  style={{ color: '#B5ED68' }}
                 >
                   Get a custom demo →
                 </button>
