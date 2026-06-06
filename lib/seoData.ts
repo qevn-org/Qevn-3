@@ -443,16 +443,15 @@ export const staticPageSeo: Record<string, PageSeoData> = {
     ],
   },
   'qevn-decoded': {
-    title: 'Why QEVN — Custom AI vs Generic SaaS | QEVN',
+    title: 'QEVN Decoded — What We Do, AI Employees & Call Simulators | QEVN',
     description:
-      'Understand what sets QEVN apart: we build AI systems custom to your business, not off-the-shelf products. Clarity, outcomes, and always-on ops.',
+      'Get a behind-the-scenes look at the future of business operations. Test our live voice call simulator and read case studies on AI automation outcomes.',
     keywords: [
-      'why QEVN',
-      'custom AI vs SaaS',
-      'AI automation agency India',
-      'QEVN difference',
-      'custom built AI',
-      'AI agency benefits',
+      'what is AI employee',
+      'AI voice caller simulator',
+      'QEVN decoded',
+      'automated business workflows',
+      'AI receptionist',
     ],
   },
   'numbers-dont-lie': {

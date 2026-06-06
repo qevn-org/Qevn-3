@@ -1,6 +1,5 @@
 import InnerPageLayout from '@/components/layout/InnerPageLayout'
-import WhyChooseUs from '@/components/sections/WhyChooseUs'
-import CtaSection from '@/components/sections/CtaSection'
+import DecodedClient from './DecodedClient'
 import type { Metadata } from 'next'
 import { staticPageSeo } from '@/lib/seoData'
 
@@ -28,15 +27,7 @@ export const metadata: Metadata = {
 export default function QevnDecodedPage() {
   return (
     <InnerPageLayout>
-      <div className="pt-[calc(var(--layout-chrome-top,104px)+0.5rem)]">
-        <WhyChooseUs
-          sectionId="page-qevn-decoded"
-          eyebrow="QEVN Decoded"
-          titlePrimary="Engineered to win."
-          titleSecondary="Not built to sell."
-        />
-      </div>
-      <CtaSection />
+      <DecodedClient />
     </InnerPageLayout>
   )
 }
