@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --bg-base: #08090A;
-  --bg-surface: #0F1012;
-  --bg-elevated: #16181C;
+  --bg-base: rgba(8, 9, 10, 0.35);
+  --bg-surface: rgba(15, 16, 18, 0.55);
+  --bg-elevated: rgba(22, 24, 28, 0.8);
   --accent-primary: #C8F04B;
   --accent-secondary: #4B8BF0;
   --text-primary: #F2F2F0;
@@ -164,4 +164,14 @@ html.lenis {
 /* Hide Spline Logo */
 #spline-logo, a[href*="spline.design"] {
   display: none !important;
+}
+
+/* Slow pulse for background glowing orbs */
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.12; transform: scale(1); }
+  50% { opacity: 0.18; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 12s ease-in-out infinite;
 }

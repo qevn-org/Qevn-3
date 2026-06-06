@@ -15,7 +15,7 @@ const industryLinks = industries.slice(0, 6).map((i) => ({
 }))
 
 const companyLinks = [
-  { label: 'The Anatomy', href: '/the-anatomy' },
+  { label: 'How it works', href: '/how-it-works' },
   { label: "Numbers Don't Lie", href: '/numbers-dont-lie' },
   { label: 'QEVN Decoded', href: '/qevn-decoded' },
   { label: 'The QEVN Files', href: '/the-qevn-files' },
@@ -30,7 +30,7 @@ const legalLinks = [
 ]
 
 const footerColumns = [
-  { title: 'Our Arsenal', links: serviceLinks },
+  { title: 'Services', links: serviceLinks },
   { title: 'Worlds We Own', links: industryLinks },
   { title: 'Company', links: companyLinks },
 ]

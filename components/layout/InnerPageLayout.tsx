@@ -46,7 +46,7 @@ export function ServiceHero({ service }: { service: ServiceData }) {
         >
           <Link href="/" className="hover:text-text-primary transition-colors">Home</Link>
           <span>/</span>
-          <Link href="/#services" className="hover:text-text-primary transition-colors">Our Arsenal</Link>
+          <Link href="/#services" className="hover:text-text-primary transition-colors">Services</Link>
           <span>/</span>
           <span style={{ color: 'var(--accent-primary)' }}>{service.title}</span>
         </motion.div>

@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${BASE}/the-anatomy`,
+      url: `${BASE}/how-it-works`,
       lastModified: NOW,
       changeFrequency: 'monthly',
       priority: 0.7,

@@ -430,7 +430,7 @@ export const staticPageSeo: Record<string, PageSeoData> = {
       '₹4999 website',
     ],
   },
-  'the-anatomy': {
+  'how-it-works': {
     title: 'How QEVN Works — AI Deployment in 3 Steps | QEVN',
     description:
       'Diagnose → Build → Operate. See exactly how QEVN audits your workflows, engineers custom AI agents, and runs them for your business.',

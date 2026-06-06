@@ -25,7 +25,7 @@ export default function Services() {
               className="font-mono text-xs tracking-[0.18em] uppercase mb-4 block"
               style={{ color: 'var(--accent-primary)' }}
             >
-              Our Arsenal
+              Services
             </span>
             <h2
               className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] leading-[0.95]"

@@ -152,7 +152,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
           eyebrow={`Service // ${service.number}`}
           breadcrumb={[
             { label: 'Home', href: '/' },
-            { label: 'Our Arsenal', href: '/#services' },
+            { label: 'Services', href: '/#services' },
           ]}
         />
 

@@ -16,8 +16,8 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { label: 'Our Arsenal', href: '#services', megaMenu: 'services' },
-  { label: 'The Anatomy', href: '/the-anatomy' },
+  { label: 'Services', href: '#services', megaMenu: 'services' },
+  { label: 'How it works', href: '/how-it-works' },
   { label: "Numbers Don't Lie", href: '/numbers-dont-lie' },
   { label: 'Worlds We Own', href: '#industries', megaMenu: 'industries' },
   { label: 'QEVN Decoded', href: '/qevn-decoded' },

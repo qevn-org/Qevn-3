@@ -10,7 +10,7 @@ Custom-engineered AI systems built specifically to run your B2B operations, sale
 
 ## Main Navigation & Core Pages
 - [Home Page](https://www.qevn.in/): Overview, Interactive ROI Calculator, Client Case-Study metrics, and booking.
-- [The Anatomy](https://www.qevn.in/the-anatomy): Detailed engineering principles and structural architecture of QEVN AI systems.
+- [How it works](https://www.qevn.in/how-it-works): Detailed engineering principles and structural architecture of QEVN AI systems.
 - [Numbers Don't Lie](https://www.qevn.in/numbers-dont-lie): Core performance statistics, case study analytics, and operational ROI proofs.
 - [QEVN Decoded](https://www.qevn.in/qevn-decoded): Technical execution breakdown, implementation processes, FAQs, and developer documentation.
 - [The QEVN Files](https://www.qevn.in/the-qevn-files): Insights, newsletters, and playbooks direct from the B2B automation trenches.

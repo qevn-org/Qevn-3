@@ -5,6 +5,7 @@ import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider'
 import SiteChrome from '@/components/layout/SiteChrome'
 import JsonLd from '@/components/seo/JsonLd'
 import FloatingWidget from '@/components/ui/FloatingWidget'
+import PremiumBackground from '@/components/ui/PremiumBackground'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -153,6 +154,7 @@ export default function RootLayout({
         <JsonLd schema={organizationSchema} />
       </head>
       <body className="bg-bg-base text-text-primary antialiased">
+        <PremiumBackground />
         <SmoothScrollProvider>
           <SiteChrome>{children}</SiteChrome>
           <FloatingWidget />
