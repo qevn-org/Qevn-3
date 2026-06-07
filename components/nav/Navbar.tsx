@@ -269,7 +269,7 @@ export default function Navbar() {
             </a>
             
             <a
-              href="https://youtube.com/@qevn"
+              href="https://youtube.com/channel/UCCmfuadUWIN66Pc5YAWLQUQ/"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
@@ -458,7 +458,7 @@ export default function Navbar() {
             </a>
             
             <a
-              href="https://youtube.com/@qevn"
+              href="https://youtube.com/channel/UCCmfuadUWIN66Pc5YAWLQUQ/"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"

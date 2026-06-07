@@ -141,7 +141,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://x.com/qevnhq"
+                href="https://x.com/QevnGroup"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="QEVN on X (Twitter)"
@@ -165,7 +165,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://youtube.com/@qevn"
+                href="https://youtube.com/channel/UCCmfuadUWIN66Pc5YAWLQUQ/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="QEVN on YouTube"

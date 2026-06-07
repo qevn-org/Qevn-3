@@ -92,8 +92,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@qevn',
-    creator: '@qevn',
+    site: '@QevnGroup',
+    creator: '@QevnGroup',
     title: 'QEVN | AI Agent Provider & AI Automation Company',
     description:
       'QEVN builds custom AI agents, AI employees, AI voice calling agents, and workflow automation systems that optimize your business operations and sales.',
@@ -143,8 +143,8 @@ const organizationSchema = {
   sameAs: [
     'https://www.linkedin.com/company/qevn/',
     'https://www.instagram.com/qevn.in?igsh=ZHh6bXRwZmpjaDN6',
-    'https://x.com/qevnhq',
-    'https://youtube.com/@qevn',
+    'https://x.com/QevnGroup',
+    'https://youtube.com/channel/UCCmfuadUWIN66Pc5YAWLQUQ/',
   ],
 }
 

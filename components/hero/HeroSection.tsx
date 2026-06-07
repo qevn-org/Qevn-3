@@ -176,7 +176,7 @@ export default function HeroSection() {
             </a>
             <span className="opacity-30">|</span>
             <a
-              href="https://x.com/qevnhq"
+              href="https://x.com/QevnGroup"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1 hover:text-accent-primary transition-colors duration-150"
