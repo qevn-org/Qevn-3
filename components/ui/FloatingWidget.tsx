@@ -9,7 +9,7 @@ export default function FloatingWidget() {
   const items = [
     {
       label: 'WhatsApp',
-      href: 'https://wa.me/918888888888', // Placeholder for user to update
+      href: 'https://wa.me/919213406563',
       aria: 'Chat with QEVN on WhatsApp',
       color: '#25D366',
       icon: (

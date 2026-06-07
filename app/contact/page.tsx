@@ -517,7 +517,7 @@ export default function ContactPage() {
 
             {/* WhatsApp */}
             <motion.a
-              href="https://wa.me/919999999999" // Example link to WhatsApp
+              href="https://wa.me/919213406563"
               target="_blank"
               rel="noopener noreferrer"
               className="group p-6 rounded-2xl border border-white/[0.04] transition-all duration-300 hover:border-accent-primary/20 flex flex-col justify-between aspect-square"
