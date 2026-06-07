@@ -9,6 +9,7 @@ import Industries from '@/components/sections/Industries'
 import WhyChooseUs from '@/components/sections/WhyChooseUs'
 import AskAndAnswer from '@/components/sections/AskAndAnswer'
 import CtaSection from '@/components/sections/CtaSection'
+import SeoLandingSection from '@/components/sections/SeoLandingSection'
 import Footer from '@/components/footer/Footer'
 import JsonLd from '@/components/seo/JsonLd'
 import type { Metadata } from 'next'
@@ -115,10 +116,110 @@ const homepageFaqSchema = {
   ],
 }
 
+const servicesSchemaList = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://www.qevn.in/#service-ai-calling-agents',
+    name: 'AI Calling Agents',
+    description: 'Human-sounding AI voice agents that handle inbound and outbound phone calls 24/7. Qualifies leads, schedules appointments, and handles support queries with low latency.',
+    provider: {
+      '@id': 'https://www.qevn.in/#organization',
+    },
+    url: 'https://www.qevn.in/services/ai-calling-agents',
+    areaServed: 'Worldwide',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://www.qevn.in/#service-ai-employees',
+    name: 'AI Employees',
+    description: 'Dedicated digital workers trained on your tools, knowledge base, and operations, designed to autonomously manage repetitive daily jobs and roles.',
+    provider: {
+      '@id': 'https://www.qevn.in/#organization',
+    },
+    url: 'https://www.qevn.in/services/multi-agent-ai-systems',
+    areaServed: 'Worldwide',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://www.qevn.in/#service-multi-agent-systems',
+    name: 'Multi-Agent Systems',
+    description: 'Autonomous networks of specialized AI agents that coordinate, delegate, and execute complex multi-step workflows end-to-end without human bottlenecks.',
+    provider: {
+      '@id': 'https://www.qevn.in/#organization',
+    },
+    url: 'https://www.qevn.in/services/multi-agent-ai-systems',
+    areaServed: 'Worldwide',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://www.qevn.in/#service-business-auto-pilot',
+    name: 'Business Auto-Pilot',
+    description: 'A managed AI operations layer that sits on top of your workflows to automate routine daily reporting, task routing, and system escalations.',
+    provider: {
+      '@id': 'https://www.qevn.in/#organization',
+    },
+    url: 'https://www.qevn.in/services/ai-business-auto-pilot',
+    areaServed: 'Worldwide',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://www.qevn.in/#service-ai-appointment-booking',
+    name: 'AI Appointment Booking',
+    description: 'Always-on scheduling system that conversationally books, confirms, reschedules, and reminds clients across phone, chat, email, and web.',
+    provider: {
+      '@id': 'https://www.qevn.in/#organization',
+    },
+    url: 'https://www.qevn.in/services/ai-appointment-booking',
+    areaServed: 'Worldwide',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://www.qevn.in/#service-ai-chatbots',
+    name: 'AI Chatbots',
+    description: 'Intelligent conversational agents for website and WhatsApp that handle FAQs, qualify traffic, and capture leads 24/7.',
+    provider: {
+      '@id': 'https://www.qevn.in/#organization',
+    },
+    url: 'https://www.qevn.in/services/ai-chatbots',
+    areaServed: 'Worldwide',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://www.qevn.in/#service-workflow-automation',
+    name: 'Workflow Automation',
+    description: 'Integration of your entire software stack to automate manual data syncs, invoice processing, customer onboarding, and daily operations.',
+    provider: {
+      '@id': 'https://www.qevn.in/#organization',
+    },
+    url: 'https://www.qevn.in/services/workflow-automation',
+    areaServed: 'Worldwide',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://www.qevn.in/#service-lead-generation-systems',
+    name: 'Lead Generation Systems',
+    description: 'AI-driven pipeline engines performing automated prospecting, real-time lead enrichment, intent monitoring, and personalized outbound sequences.',
+    provider: {
+      '@id': 'https://www.qevn.in/#organization',
+    },
+    url: 'https://www.qevn.in/services/lead-generation-systems',
+    areaServed: 'Worldwide',
+  },
+]
+
+
 export default function Home() {
   return (
     <>
-      <JsonLd schema={[websiteSchema, homepageFaqSchema]} />
+      <JsonLd schema={[websiteSchema, homepageFaqSchema, ...servicesSchemaList]} />
       <main className="relative">
         <Navbar />
         <HeroSection />
@@ -131,6 +232,7 @@ export default function Home() {
         <WhyChooseUs />
         <AskAndAnswer />
         <CtaSection />
+        <SeoLandingSection />
         <Footer />
       </main>
     </>

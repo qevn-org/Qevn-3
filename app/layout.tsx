@@ -46,22 +46,23 @@ const BASE_URL = 'https://www.qevn.in'
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'QEVN — AI Business Automation Agency',
+    default: 'QEVN | AI Agent Provider & AI Automation Company',
     template: '%s | QEVN',
   },
   description:
-    'QEVN builds custom AI systems that run your operations, sales, and workflows 24/7. Multi-agent systems, AI calling agents, workflow automation — custom-built, not SaaS.',
+    'QEVN builds custom AI agents, AI employees, AI voice calling agents, and workflow automation systems that optimize your business operations and sales.',
   keywords: [
-    'AI automation agency',
-    'multi-agent AI systems',
+    'AI Agent Provider',
+    'AI Automation Company',
+    'AI Employee Provider',
+    'AI Voice Agent Company',
+    'Multi-Agent Systems Company',
+    'Business Process Automation Company',
+    'custom AI agents',
     'AI calling agents India',
-    'business process automation',
     'AI sales automation',
     'custom AI systems India',
     'AI workflow automation',
-    'AI business automation',
-    'AI operations management',
-    'AI agency India',
     'QEVN',
   ],
   authors: [{ name: 'QEVN', url: BASE_URL }],
@@ -76,15 +77,15 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: BASE_URL,
     siteName: 'QEVN',
-    title: 'QEVN — AI Business Automation Agency',
+    title: 'QEVN | AI Agent Provider & AI Automation Company',
     description:
-      'Your Business. Running Itself. Custom AI systems for operations, sales, and workflows — built specifically for your business.',
+      'QEVN builds custom AI agents, AI employees, AI voice calling agents, and workflow automation systems that optimize your business operations and sales.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'QEVN — Your Business. Running Itself.',
+        alt: 'QEVN | AI Agent Provider & AI Automation Company',
         type: 'image/png',
       },
     ],
@@ -93,9 +94,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@qevn',
     creator: '@qevn',
-    title: 'QEVN — AI Business Automation Agency',
+    title: 'QEVN | AI Agent Provider & AI Automation Company',
     description:
-      'Your Business. Running Itself. Custom AI systems for operations, sales, and workflows.',
+      'QEVN builds custom AI agents, AI employees, AI voice calling agents, and workflow automation systems that optimize your business operations and sales.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -129,7 +130,7 @@ const organizationSchema = {
     caption: 'QEVN Logo',
   },
   description:
-    'QEVN builds custom AI systems — multi-agent workflows, AI calling agents, and intelligent automation — engineered specifically for each client\'s operations.',
+    'QEVN builds AI agents, AI employees, voice agents, and automation systems that help businesses automate sales, operations, customer support, and workflows.',
   foundingDate: '2024',
   areaServed: 'Worldwide',
   serviceType: [

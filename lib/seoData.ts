@@ -398,23 +398,26 @@ export const industrySeo: Record<string, PageSeoData> = {
 
 export const staticPageSeo: Record<string, PageSeoData> = {
   home: {
-    title: 'QEVN — AI Business Automation Agency | Multi-Agent Systems & AI Calling Agents',
+    title: 'QEVN | AI Agents, AI Employees & Business Automation',
     description:
-      'QEVN builds custom AI systems that run your operations, sales, and workflows — 24/7. Multi-agent systems, AI calling agents, workflow automation, and more. Custom-built, not SaaS.',
+      'QEVN builds custom AI agents, AI employees, AI voice calling agents, and workflow automation systems that optimize your business operations and sales.',
     keywords: [
-      'AI automation agency',
-      'multi-agent AI systems',
+      'AI Agent Provider',
+      'AI Automation Company',
+      'AI Employee Provider',
+      'AI Voice Agent Company',
+      'Multi-Agent Systems Company',
+      'Business Process Automation Company',
+      'custom AI agents',
       'AI calling agents India',
-      'business automation agency',
       'AI sales automation',
       'AI operations',
       'custom AI systems India',
       'AI workflow automation',
-      'AI business automation India',
       'replace manual ops with AI',
       'QEVN',
     ],
-    ogDescription: 'Your Business. Running Itself. — Custom AI systems built to handle your operations, sales, and workflows 24/7.',
+    ogDescription: 'QEVN builds custom AI agents, AI employees, AI voice calling agents, and workflow automation systems that optimize your business operations and sales.',
   },
   offer: {
     title: 'Website Build & Redesign Offer — From ₹4,999 | QEVN',
@@ -473,7 +476,7 @@ export const staticPageSeo: Record<string, PageSeoData> = {
       'We exist to offer businesses a simpler operating model powered by AI. Read our manifesto, mission, vision, and core USPs of zero-friction automation.',
     keywords: [
       'about QEVN',
-      'AI automation agency',
+      'AI Automation Company',
       'business process automation',
       'QEVN manifesto',
       'QEVN mission',
@@ -486,7 +489,7 @@ export const staticPageSeo: Record<string, PageSeoData> = {
       'Get in touch with QEVN. Fill out our contact form or follow our social channels to learn how we replace manual operational friction with custom, automated AI systems.',
     keywords: [
       'contact QEVN',
-      'AI automation agency contact',
+      'AI Agent Provider contact',
       'book AI consultation India',
       'QEVN email',
       'AI business solutions consultation',

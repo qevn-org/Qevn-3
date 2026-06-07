@@ -89,7 +89,7 @@ export default function HeroSection() {
           className="font-display text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-[-0.04em] leading-[0.92] mb-8"
           style={{ color: 'var(--text-primary)' }}
         >
-          <span className="block">You Think It.</span>
+          <span className="block">Your Business.</span>
           <span
             className="block"
             style={{
@@ -100,7 +100,7 @@ export default function HeroSection() {
               backgroundClip: 'text',
             }}
           >
-            Qevn Runs It.
+            Running Itself.
           </span>
         </motion.h1>
 
@@ -110,8 +110,7 @@ export default function HeroSection() {
           className="max-w-2xl text-lg md:text-xl leading-relaxed mb-12"
           style={{ color: 'var(--text-muted)' }}
         >
-          QEVN builds dedicated AI systems that handle your operations, sales,
-          and workflows — so your team focuses on what matters.
+          Custom AI Agents, AI Employees, and Automation built around your business. We are an AI Agent Provider and AI Automation Company engineering custom operating systems.
         </motion.p>
 
         {/* CTAs */}
@@ -203,7 +202,7 @@ export default function HeroSection() {
             </a>
           </div>
           <span className="inline-flex items-center px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-[9px] uppercase tracking-widest text-[#C8F04B] ml-auto sm:ml-0">
-            Verified Agency
+            AI Agent Provider
           </span>
         </motion.div>
       </motion.div>

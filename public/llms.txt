@@ -1,4 +1,4 @@
-# QEVN — AI Business Automation Agency
+# QEVN — AI Automation Company & AI Agent Provider
 
 Custom-engineered AI systems built specifically to run your B2B operations, sales pipelines, and daily workflows 24/7. Not generic SaaS — bespoke, self-hosted, and client-owned infrastructure.
 
