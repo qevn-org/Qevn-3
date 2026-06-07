@@ -175,10 +175,10 @@ export default function HowItWorksClient() {
             transition={{ duration: 0.5, delay: 0.24 }}
             className="text-xs font-mono tracking-wider text-white/45 mb-10 max-w-lg mx-auto py-3 px-5 rounded-2xl bg-white/[0.01] border border-white/[0.04] space-y-1.5"
           >
-            <div>No complicated processes.</div>
-            <div>No endless meetings.</div>
-            <div>No generic automation templates.</div>
-            <div className="text-[#B5ED68] font-medium pt-1">Just AI systems designed around the way your business operates.</div>
+            <div>Zero boilerplate integrations.</div>
+            <div>Zero endless consulting loops.</div>
+            <div>Zero generic automation templates.</div>
+            <div className="text-[#B5ED68] font-medium pt-1">Only custom AI operating systems engineered to run your exact workflows.</div>
           </motion.div>
 
           <motion.div
