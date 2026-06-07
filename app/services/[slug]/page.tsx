@@ -101,13 +101,12 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
+    '@id': `${url}#service`,
     name: service.title,
     description: service.description,
     url,
     provider: {
-      '@type': 'Organization',
-      name: 'QEVN',
-      url: BASE,
+      '@id': 'https://www.qevn.in/#organization'
     },
     areaServed: 'Worldwide',
     serviceType: 'AI Automation',

@@ -39,9 +39,13 @@ export const metadata: Metadata = {
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': 'https://www.qevn.in/#website',
   name: 'QEVN',
   url: 'https://www.qevn.in',
   description: seo.description,
+  publisher: {
+    '@id': 'https://www.qevn.in/#organization'
+  },
   potentialAction: {
     '@type': 'SearchAction',
     target: {
@@ -55,6 +59,10 @@ const websiteSchema = {
 const homepageFaqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
+  '@id': 'https://www.qevn.in/#faq',
+  isPartOf: {
+    '@id': 'https://www.qevn.in/#website'
+  },
   mainEntity: [
     {
       '@type': 'Question',

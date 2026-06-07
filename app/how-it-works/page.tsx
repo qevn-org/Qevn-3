@@ -2,18 +2,20 @@ import InnerPageLayout from '@/components/layout/InnerPageLayout'
 import HowItWorksClient from './HowItWorksClient'
 import type { Metadata } from 'next'
 import { staticPageSeo } from '@/lib/seoData'
+import JsonLd from '@/components/seo/JsonLd'
 
 const seo = staticPageSeo['how-it-works']
+const url = 'https://www.qevn.in/how-it-works'
 
 export const metadata: Metadata = {
   title: seo.title,
   description: seo.description,
   keywords: seo.keywords,
-  alternates: { canonical: 'https://www.qevn.in/how-it-works' },
+  alternates: { canonical: url },
   openGraph: {
     title: seo.title,
     description: seo.description,
-    url: 'https://www.qevn.in/how-it-works',
+    url,
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: seo.title }],
   },
   twitter: {
@@ -24,10 +26,37 @@ export const metadata: Metadata = {
   },
 }
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.qevn.in' },
+    { '@type': 'ListItem', position: 2, name: 'How It Works', item: url },
+  ],
+}
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${url}#webpage`,
+  name: seo.title,
+  description: seo.description,
+  url,
+  isPartOf: {
+    '@id': 'https://www.qevn.in/#website'
+  },
+  publisher: {
+    '@id': 'https://www.qevn.in/#organization'
+  }
+}
+
 export default function HowItWorksPage() {
   return (
-    <InnerPageLayout>
-      <HowItWorksClient />
-    </InnerPageLayout>
+    <>
+      <JsonLd schema={[breadcrumbSchema, webPageSchema]} />
+      <InnerPageLayout>
+        <HowItWorksClient />
+      </InnerPageLayout>
+    </>
   )
 }

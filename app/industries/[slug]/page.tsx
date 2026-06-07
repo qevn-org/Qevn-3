@@ -71,10 +71,13 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
   const webPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
+    '@id': `${url}#webpage`,
     name: industrySeo[params.slug]?.title ?? `AI for ${industry.title} — QEVN`,
     description: industrySeo[params.slug]?.description ?? industry.description,
     url,
-    isPartOf: { '@type': 'WebSite', url: BASE, name: 'QEVN' },
+    isPartOf: {
+      '@id': 'https://www.qevn.in/#website'
+    },
     about: {
       '@type': 'Thing',
       name: `AI Automation for ${industry.title}`,

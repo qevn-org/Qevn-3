@@ -6,6 +6,33 @@ import Link from 'next/link'
 import InnerPageLayout from '@/components/layout/InnerPageLayout'
 import Button from '@/components/ui/Button'
 import InlineIcon from '@/components/ui/InlineIcon'
+import JsonLd from '@/components/seo/JsonLd'
+
+const url = 'https://www.qevn.in/the-qevn-files'
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.qevn.in' },
+    { '@type': 'ListItem', position: 2, name: 'The QEVN Files', item: url },
+  ],
+}
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${url}#webpage`,
+  name: 'The QEVN Files | QEVN',
+  description: 'Insights, newsletters, and playbooks direct from the B2B automation trenches.',
+  url,
+  isPartOf: {
+    '@id': 'https://www.qevn.in/#website'
+  },
+  publisher: {
+    '@id': 'https://www.qevn.in/#organization'
+  }
+}
 
 // Animation variants for reveal
 const fadeInUp = {
@@ -27,7 +54,9 @@ const staggerContainer = {
 
 export default function AboutQevnPage() {
   return (
-    <InnerPageLayout>
+    <>
+      <JsonLd schema={[breadcrumbSchema, webPageSchema]} />
+      <InnerPageLayout>
       {/* ─── Hero Section ─── */}
       <section className="relative overflow-hidden pb-20 lg:pb-32 pt-[calc(var(--layout-chrome-top,104px)+3rem)] lg:pt-[calc(var(--layout-chrome-top,104px)+4.5rem)]">
         {/* Subtle glow */}
@@ -498,5 +527,6 @@ export default function AboutQevnPage() {
         </div>
       </section>
     </InnerPageLayout>
+    </>
   )
 }

@@ -118,9 +118,14 @@ export const metadata: Metadata = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://www.qevn.in/#organization',
   name: 'QEVN',
   url: BASE_URL,
-  logo: `${BASE_URL}/logo-web.png`,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${BASE_URL}/logo-web.png`,
+    caption: 'QEVN Logo',
+  },
   description:
     'QEVN builds custom AI systems — multi-agent workflows, AI calling agents, and intelligent automation — engineered specifically for each client\'s operations.',
   foundingDate: '2024',
