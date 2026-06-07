@@ -89,7 +89,7 @@ export default function HeroSection() {
           className="font-display text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-[-0.04em] leading-[0.92] mb-8"
           style={{ color: 'var(--text-primary)' }}
         >
-          <span className="block">Your Business.</span>
+          <span className="block">You Think It.</span>
           <span
             className="block"
             style={{
@@ -100,7 +100,7 @@ export default function HeroSection() {
               backgroundClip: 'text',
             }}
           >
-            Running Itself.
+            Qevn Runs It.
           </span>
         </motion.h1>
 
