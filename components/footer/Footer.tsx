@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import QevnLogo from '@/components/ui/QevnLogo'
 import { services, industries } from '@/lib/data'
+import { useVisitorIntelligence } from '@/components/providers/VisitorIntelligenceProvider'
 
 const serviceLinks = services.slice(0, 6).map((s) => ({
   label: s.title,
@@ -36,6 +37,7 @@ const footerColumns = [
 ]
 
 export default function Footer() {
+  const { setShowPreferences } = useVisitorIntelligence()
   return (
     <footer
       className="relative pt-20 pb-8"
@@ -206,6 +208,16 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <button
+                type="button"
+                onClick={() => setShowPreferences(true)}
+                className="text-xs transition-colors hover:text-text-primary focus:outline-none bg-transparent border-0 cursor-pointer p-0"
+                style={{ color: 'var(--text-muted)' }}
+              >
+                Manage Cookies
+              </button>
+            </li>
           </ul>
 
           <p

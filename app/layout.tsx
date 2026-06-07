@@ -6,6 +6,8 @@ import SiteChrome from '@/components/layout/SiteChrome'
 import JsonLd from '@/components/seo/JsonLd'
 import FloatingWidget from '@/components/ui/FloatingWidget'
 import PremiumBackground from '@/components/ui/PremiumBackground'
+import { VisitorIntelligenceProvider } from '@/components/providers/VisitorIntelligenceProvider'
+import CookieConsent from '@/components/ui/CookieConsent'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -159,11 +161,14 @@ export default function RootLayout({
         <JsonLd schema={organizationSchema} />
       </head>
       <body className="bg-bg-base text-text-primary antialiased">
-        <PremiumBackground />
-        <SmoothScrollProvider>
-          <SiteChrome>{children}</SiteChrome>
-          <FloatingWidget />
-        </SmoothScrollProvider>
+        <VisitorIntelligenceProvider>
+          <PremiumBackground />
+          <SmoothScrollProvider>
+            <SiteChrome>{children}</SiteChrome>
+            <FloatingWidget />
+          </SmoothScrollProvider>
+          <CookieConsent />
+        </VisitorIntelligenceProvider>
       </body>
     </html>
   )

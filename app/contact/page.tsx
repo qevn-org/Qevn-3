@@ -4,10 +4,13 @@ import { useState } from 'react'
 import InnerPageLayout from '@/components/layout/InnerPageLayout'
 import Button from '@/components/ui/Button'
 import { staticPageSeo } from '@/lib/seoData'
+import { useVisitorIntelligence } from '@/components/providers/VisitorIntelligenceProvider'
 
 const seo = staticPageSeo['contact']
 
 export default function ContactPage() {
+  const { trackLeadSubmit } = useVisitorIntelligence()
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,7 +21,16 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Demo implementation
+    
+    // Telemetry Sync
+    trackLeadSubmit({
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      message: formData.message,
+      inquiry_type: 'Contact Inquiry'
+    })
+
     setSubmitted(true)
   }
 
