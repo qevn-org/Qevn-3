@@ -1,6 +1,5 @@
 import InnerPageLayout from '@/components/layout/InnerPageLayout'
-import Metrics from '@/components/sections/Metrics'
-import CtaSection from '@/components/sections/CtaSection'
+import NumbersDontLieClient from './NumbersDontLieClient'
 import type { Metadata } from 'next'
 import { staticPageSeo } from '@/lib/seoData'
 
@@ -28,10 +27,7 @@ export const metadata: Metadata = {
 export default function NumbersDontLiePage() {
   return (
     <InnerPageLayout>
-      <div className="pt-[calc(var(--layout-chrome-top,104px)+0.5rem)]">
-        <Metrics sectionId="page-numbers" />
-      </div>
-      <CtaSection />
+      <NumbersDontLieClient />
     </InnerPageLayout>
   )
 }
