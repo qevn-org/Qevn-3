@@ -22,6 +22,7 @@ const navLinks: NavLink[] = [
   { label: 'Worlds We Own', href: '#industries', megaMenu: 'industries' },
   { label: 'QEVN Decoded', href: '/qevn-decoded' },
   { label: 'The QEVN Files', href: '/the-qevn-files' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Contact Us', href: '/contact' },
 ]
 

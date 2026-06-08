@@ -21,6 +21,7 @@ const companyLinks = [
   { label: 'QEVN Decoded', href: '/qevn-decoded' },
   { label: 'The QEVN Files', href: '/the-qevn-files' },
   { label: 'Worlds We Own', href: '/#industries' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Contact Us', href: '/contact' },
   { label: 'Book a Call', href: '/#cta' },
 ]
