@@ -11,6 +11,7 @@ interface ButtonProps {
   className?: string
   pulse?: boolean
   type?: 'button' | 'submit'
+  disabled?: boolean
 }
 
 export default function Button({
@@ -21,6 +22,7 @@ export default function Button({
   className = '',
   pulse = false,
   type = 'button',
+  disabled = false,
 }: ButtonProps) {
   const sizes = {
     sm: 'px-4 py-2 text-sm',
@@ -51,16 +53,18 @@ export default function Button({
   return (
     <motion.button
       type={type}
-      onClick={onClick}
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
       className={`
         inline-flex items-center gap-2
         rounded-full font-body tracking-wide
+        ${disabled ? 'opacity-55 cursor-not-allowed pointer-events-none' : ''}
         ${sizes[size]}
         ${variants[variant]}
         ${className}
       `}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={disabled ? undefined : { scale: 1.02 }}
+      whileTap={disabled ? undefined : { scale: 0.98 }}
     >
       {children}
     </motion.button>

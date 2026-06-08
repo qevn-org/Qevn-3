@@ -1,0 +1,240 @@
+import { NextResponse } from 'next/server'
+import { Resend } from 'resend'
+import { supabaseServer } from '@/lib/supabaseClient'
+
+export const dynamic = 'force-dynamic'
+
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY || 're_mock_key')
+
+export async function POST(req: Request) {
+  try {
+    const formData = await req.formData()
+    
+    // Extract fields
+    const firstName = formData.get('first_name') as string
+    const lastName = formData.get('last_name') as string
+    const email = formData.get('email') as string
+    const phone = formData.get('phone') as string
+    const linkedinUrl = formData.get('linkedin_url') as string
+    const portfolioUrl = formData.get('portfolio_url') as string
+    const location = formData.get('location') as string
+    const yearsExperience = parseInt(formData.get('years_experience') as string || '0', 10)
+    const selectedRole = formData.get('selected_role') as string
+    const customRole = formData.get('custom_role') as string
+    const whyJoinQevn = formData.get('why_join_qevn') as string
+    const achievement = formData.get('achievement') as string
+    const interviewType = formData.get('interview_type') as string
+    const scheduledDatetime = formData.get('scheduled_datetime') as string
+    const resumeFile = formData.get('resume') as File
+
+    // Basic Validation
+    if (!firstName || !lastName || !email || !location || !selectedRole || !whyJoinQevn || !achievement || !interviewType || !scheduledDatetime || !resumeFile) {
+      return NextResponse.json({ error: 'Missing required application fields.' }, { status: 400 })
+    }
+
+    // Validate Resume file size (max 10MB)
+    const maxSizeBytes = 10 * 1024 * 1024
+    if (resumeFile.size > maxSizeBytes) {
+      return NextResponse.json({ error: 'Resume file size exceeds the 10 MB limit.' }, { status: 400 })
+    }
+
+    // Validate Resume file extension
+    const allowedExtensions = ['pdf', 'docx']
+    const fileExtension = resumeFile.name.split('.').pop()?.toLowerCase() || ''
+    if (!allowedExtensions.includes(fileExtension)) {
+      return NextResponse.json({ error: 'Only PDF or DOCX resumes are accepted.' }, { status: 400 })
+    }
+
+    // Generate UUID for storage path and DB primary key
+    const uuid = crypto.randomUUID()
+
+    // 1. Upload Resume file to Supabase Storage
+    const resumeBuffer = Buffer.from(await resumeFile.arrayBuffer())
+    const resumeFileName = `resume.${fileExtension}`
+    const storagePath = `${uuid}/${resumeFileName}`
+
+    const { data: uploadData, error: uploadError } = await supabaseServer.storage
+      .from('career-resumes')
+      .upload(storagePath, resumeBuffer, {
+        contentType: resumeFile.type,
+        upsert: true
+      })
+
+    if (uploadError) {
+      console.error('Supabase resume upload error:', uploadError)
+      return NextResponse.json({ error: 'Failed to upload resume to storage.' }, { status: 500 })
+    }
+
+    // Get Public URL for storage object
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL
+    const resumePublicUrl = `${supabaseUrl}/storage/v1/object/public/career-resumes/${storagePath}`
+
+    // 2. Insert application details into career_applications database table
+    const applicationPayload = {
+      id: uuid,
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      phone: phone || '',
+      linkedin_url: linkedinUrl || '',
+      portfolio_url: portfolioUrl || '',
+      location: location,
+      years_experience: yearsExperience,
+      selected_role: selectedRole,
+      custom_role: customRole || '',
+      why_join_qevn: whyJoinQevn,
+      achievement: achievement,
+      resume_url: resumePublicUrl,
+      interview_type: interviewType,
+      scheduled_datetime: scheduledDatetime,
+      status: 'New',
+      notes: '',
+      is_archived: false
+    }
+
+    const { error: dbError } = await supabaseServer
+      .from('career_applications')
+      .insert(applicationPayload)
+
+    if (dbError) {
+      console.error('Supabase DB insertion error:', dbError)
+      return NextResponse.json({ error: 'Failed to save application to database.' }, { status: 500 })
+    }
+
+    // Format Date & Time for email representation
+    const scheduledDateObj = new Date(scheduledDatetime)
+    const formattedDate = scheduledDateObj.toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      timeZone: 'Asia/Kolkata'
+    })
+    const formattedTime = scheduledDateObj.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZoneName: 'short',
+      timeZone: 'Asia/Kolkata'
+    })
+
+    // 3. Trigger Resend Automated Emails
+    // Email 1 — Candidate Confirmation
+    const candidateSubject = 'Your Interview With QEVN Is Scheduled'
+    const candidateHtml = `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #111;">
+        <h2 style="color: #08090A; font-weight: bold; font-size: 24px;">Hi ${firstName},</h2>
+        <p style="font-size: 16px; line-height: 1.5; color: #555;">Thanks for your interest in QEVN.</p>
+        <p style="font-size: 16px; line-height: 1.5; color: #555;">Your interview has been scheduled for:</p>
+        <div style="background-color: #f7f7f7; padding: 15px; border-radius: 8px; margin: 20px 0; border: 1px solid #e0e0e0;">
+          <p style="font-size: 16px; font-weight: bold; margin: 0;">Date: ${formattedDate}</p>
+          <p style="font-size: 16px; font-weight: bold; margin: 5px 0 0 0;">Time: ${formattedTime}</p>
+        </div>
+        <p style="font-size: 16px; line-height: 1.5; color: #555;"><strong>Selected Role:</strong> ${selectedRole === 'None Of These. I Want To Build Something New.' ? `Custom: ${customRole}` : selectedRole}</p>
+        <p style="font-size: 16px; line-height: 1.5; color: #555;">We'll review your application before the conversation.</p>
+        <p style="font-size: 16px; line-height: 1.5; color: #555; margin-top: 30px;">Looking forward to meeting you.</p>
+        <p style="font-size: 16px; font-weight: bold; color: #08090A; margin: 5px 0 0 0;">Team QEVN</p>
+      </div>
+    `
+
+    // Email 2 — Internal Team Notification
+    const internalSubject = `New Career Application Submitted — ${firstName} ${lastName}`
+    const internalHtml = `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #111;">
+        <h2 style="color: #08090A; font-size: 20px; border-bottom: 2px solid #eaeaea; padding-bottom: 10px;">Candidate Details</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #555; width: 150px;">Name</td>
+            <td style="padding: 8px 0; color: #111;">${firstName} ${lastName}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #555;">Email</td>
+            <td style="padding: 8px 0; color: #111;"><a href="mailto:${email}">${email}</a></td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #555;">Phone</td>
+            <td style="padding: 8px 0; color: #111;">${phone || 'Not Provided'}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #555;">Role</td>
+            <td style="padding: 8px 0; color: #111;">${selectedRole}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #555;">Interview Time</td>
+            <td style="padding: 8px 0; color: #111;">${formattedDate} at ${formattedTime}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #555;">Resume Link</td>
+            <td style="padding: 8px 0; color: #111;"><a href="${resumePublicUrl}" target="_blank">View Resume</a></td>
+          </tr>
+          ${linkedinUrl ? `<tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #555;">LinkedIn</td>
+            <td style="padding: 8px 0; color: #111;"><a href="${linkedinUrl}" target="_blank">Profile</a></td>
+          </tr>` : ''}
+          ${portfolioUrl ? `<tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #555;">Portfolio</td>
+            <td style="padding: 8px 0; color: #111;"><a href="${portfolioUrl}" target="_blank">Website</a></td>
+          </tr>` : ''}
+        </table>
+
+        ${selectedRole === 'None Of These. I Want To Build Something New.' ? `
+          <h3 style="color: #08090A; font-size: 16px; margin-top: 25px;">Custom Role Proposal</h3>
+          <p style="background-color: #f7f7f7; padding: 15px; border-radius: 8px; border: 1px solid #e0e0e0; font-size: 14px; line-height: 1.5; color: #333;">
+            <strong>Suggested Role:</strong> ${customRole}<br/><br/>
+            <strong>Why join & vision:</strong><br/>
+            ${whyJoinQevn.replace(/\n/g, '<br/>')}
+          </p>
+        ` : `
+          <h3 style="color: #08090A; font-size: 16px; margin-top: 25px;">Why join QEVN?</h3>
+          <p style="background-color: #f7f7f7; padding: 15px; border-radius: 8px; border: 1px solid #e0e0e0; font-size: 14px; line-height: 1.5; color: #333;">
+            ${whyJoinQevn.replace(/\n/g, '<br/>')}
+          </p>
+        `}
+
+        <h3 style="color: #08090A; font-size: 16px; margin-top: 20px;">Proudest Build/Achievement</h3>
+        <p style="background-color: #f7f7f7; padding: 15px; border-radius: 8px; border: 1px solid #e0e0e0; font-size: 14px; line-height: 1.5; color: #333;">
+          ${achievement.replace(/\n/g, '<br/>')}
+        </p>
+
+        <p style="margin-top: 30px; border-top: 1px solid #eaeaea; padding-top: 20px;">
+          <a href="${req.headers.get('origin') || 'https://www.qevn.in'}/careers/admin" style="background-color: #08090A; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Open Careers Dashboard</a>
+        </p>
+      </div>
+    `
+
+    // Proactively send email via Resend API
+    try {
+      if (process.env.RESEND_API_KEY) {
+        await Promise.all([
+          // Email 1 to Candidate
+          resend.emails.send({
+            from: 'hello@qevn.in',
+            to: email,
+            subject: candidateSubject,
+            html: candidateHtml
+          }),
+          // Email 2 to Internal hello@qevn.in
+          resend.emails.send({
+            from: 'hello@qevn.in',
+            to: 'hello@qevn.in',
+            subject: internalSubject,
+            html: internalHtml
+          })
+        ])
+        console.log('Automated emails successfully sent via Resend API.')
+      } else {
+        console.warn('RESEND_API_KEY environment variable is not defined. Email logging simulation output:')
+        console.log(`[Candidate Mail Target: ${email}]\nSubject: ${candidateSubject}\nContent:\n${candidateHtml}\n\n`)
+        console.log(`[Internal Mail Target: hello@qevn.in]\nSubject: ${internalSubject}\nContent:\n${internalHtml}`)
+      }
+    } catch (emailErr) {
+      // Catch error so the submission flow does not break if Resend setup has issues
+      console.error('Failed to send Resend emails:', emailErr)
+    }
+
+    return NextResponse.json({ success: true, id: uuid })
+  } catch (err) {
+    console.error('Submission route error:', err)
+    return NextResponse.json({ error: 'Internal server error during application processing.' }, { status: 500 })
+  }
+}
