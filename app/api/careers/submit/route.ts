@@ -224,7 +224,7 @@ export async function POST(req: Request) {
     // Proactively send email via Resend API
     try {
       if (process.env.RESEND_API_KEY) {
-        await Promise.all([
+        const [candidateRes, internalRes] = await Promise.all([
           // Email 1 to Candidate
           resend.emails.send({
             from: 'hello@qevn.in',
@@ -240,7 +240,17 @@ export async function POST(req: Request) {
             html: internalHtml
           })
         ])
-        console.log('Automated emails successfully sent via Resend API.')
+
+        if (candidateRes.error) {
+          console.error('Resend candidate email error:', candidateRes.error)
+        }
+        if (internalRes.error) {
+          console.error('Resend internal email error:', internalRes.error)
+        }
+
+        if (!candidateRes.error && !internalRes.error) {
+          console.log('Automated emails successfully sent via Resend API.')
+        }
       } else {
         console.warn('RESEND_API_KEY environment variable is not defined. Email logging simulation output:')
         console.log(`[Candidate Mail Target: ${email}]\nSubject: ${candidateSubject}\nContent:\n${candidateHtml}\n\n`)
