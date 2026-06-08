@@ -49,6 +49,25 @@ export async function POST(req: Request) {
     // Generate UUID for storage path and DB primary key
     const uuid = crypto.randomUUID()
 
+    // Ensure storage bucket exists (self-healing setup)
+    try {
+      const { data: buckets } = await supabaseServer.storage.listBuckets()
+      const bucketExists = buckets?.some(b => b.id === 'career-resumes')
+      if (!bucketExists) {
+        console.log('Bucket "career-resumes" not found. Creating bucket...')
+        const { error: createBucketError } = await supabaseServer.storage.createBucket('career-resumes', {
+          public: true
+        })
+        if (createBucketError) {
+          console.error('Failed to create storage bucket automatically:', createBucketError)
+        } else {
+          console.log('Bucket "career-resumes" created successfully.')
+        }
+      }
+    } catch (bucketErr) {
+      console.error('Error verifying/creating storage bucket:', bucketErr)
+    }
+
     // 1. Upload Resume file to Supabase Storage
     const resumeBuffer = Buffer.from(await resumeFile.arrayBuffer())
     const resumeFileName = `resume.${fileExtension}`
