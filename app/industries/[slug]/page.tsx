@@ -14,9 +14,11 @@ import type { Metadata } from 'next'
 const BASE = 'https://www.qevn.in'
 
 export function generateStaticParams() {
-  return industries.map((industry) => ({
-    slug: industry.slug,
-  }))
+  return industries
+    .filter((industry) => industry.slug !== 'food-beverage')
+    .map((industry) => ({
+      slug: industry.slug,
+    }))
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
