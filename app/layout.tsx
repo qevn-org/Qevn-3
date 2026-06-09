@@ -145,6 +145,7 @@ const organizationSchema = {
     'https://www.instagram.com/qevn.in?igsh=ZHh6bXRwZmpjaDN6',
     'https://x.com/QevnGroup',
     'https://youtube.com/channel/UCCmfuadUWIN66Pc5YAWLQUQ/',
+    'https://qevn.substack.com/',
   ],
 }
 
