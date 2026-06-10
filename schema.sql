@@ -22,7 +22,9 @@ CREATE TABLE IF NOT EXISTS public.career_applications (
     scheduled_datetime TIMESTAMP WITH TIME ZONE NOT NULL,
     status TEXT DEFAULT 'New'::text NOT NULL,
     notes TEXT DEFAULT ''::text NOT NULL,
-    is_archived BOOLEAN DEFAULT false NOT NULL
+    is_archived BOOLEAN DEFAULT false NOT NULL,
+    google_meet_url TEXT DEFAULT ''::text NOT NULL,
+    calendar_event_id TEXT DEFAULT ''::text NOT NULL
 );
 
 -- Index optimizations for searching and filtering
@@ -61,3 +63,7 @@ USING (bucket_id = 'career-resumes');
 CREATE POLICY "Anonymous Upload Access for Resumes"
 ON storage.objects FOR INSERT
 WITH CHECK (bucket_id = 'career-resumes');
+
+-- 4. Alter table statements for existing databases
+ALTER TABLE public.career_applications ADD COLUMN IF NOT EXISTS google_meet_url TEXT DEFAULT ''::text NOT NULL;
+ALTER TABLE public.career_applications ADD COLUMN IF NOT EXISTS calendar_event_id TEXT DEFAULT ''::text NOT NULL;
