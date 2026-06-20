@@ -3,10 +3,35 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import { announcements, AnnouncementBar } from '@/lib/announcement-bar.config'
 
 export default function SaleBanner() {
   const [visible, setVisible] = useState(true)
   const [pulse, setPulse] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const [activeAnn, setActiveAnn] = useState<AnnouncementBar | null>(null)
+
+  useEffect(() => {
+    // Determine active announcement on the client side to avoid hydration mismatch
+    const getActiveAnnouncement = () => {
+      const now = new Date()
+      for (const ann of announcements) {
+        if (ann.startDate) {
+          const start = new Date(ann.startDate)
+          if (now < start) continue
+        }
+        if (ann.endDate) {
+          const end = new Date(ann.endDate)
+          end.setHours(23, 59, 59, 999) // Make end date inclusive of the full day
+          if (now > end) continue
+        }
+        return ann
+      }
+      return null
+    }
+    setActiveAnn(getActiveAnnouncement())
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -20,7 +45,11 @@ export default function SaleBanner() {
     requestAnimationFrame(() => {
       window.dispatchEvent(new Event('qevn-chrome-top'))
     })
-  }, [visible])
+  }, [visible, activeAnn])
+
+  if (!mounted || !activeAnn) return null
+
+  const isExternal = activeAnn.href.startsWith('http')
 
   return (
     <AnimatePresence>
@@ -60,35 +89,62 @@ export default function SaleBanner() {
             </span>
 
             <p className="min-w-0 flex-1 text-center text-[9px] xs:text-[10px] sm:text-[11px] leading-tight font-semibold text-bg-base tracking-wide whitespace-nowrap truncate">
-              <span className="font-extrabold">LIMITED OFFER:</span>{' '}
-              Build or redesign your site from{' '}
-              <span
-                className={`inline font-extrabold tabular-nums transition-transform duration-150 ${
-                  pulse ? 'scale-105' : 'scale-100'
-                }`}
-              >
-                ₹4,999/-
-              </span>
-              <span className="hidden md:inline"> · </span>
-              <span className="hidden md:inline">Other currencies on offer page</span>
+              {activeAnn.text.includes('LIMITED OFFER:') ? (
+                <>
+                  <span className="font-extrabold">LIMITED OFFER:</span>{' '}
+                  {activeAnn.text.replace('LIMITED OFFER:', '').replace('₹4,999/-', '')}
+                  <span
+                    className={`inline font-extrabold tabular-nums transition-transform duration-150 ${
+                      pulse ? 'scale-105' : 'scale-100'
+                    }`}
+                  >
+                    ₹4,999/-
+                  </span>
+                  <span className="hidden md:inline"> · </span>
+                  <span className="hidden md:inline">Other currencies on offer page</span>
+                </>
+              ) : (
+                <span>{activeAnn.text}</span>
+              )}
             </p>
 
-            <Link
-              href="/offer"
-              className="shrink-0 inline-flex items-center gap-1 rounded-full bg-bg-base px-2 py-0.5 sm:px-2.5 text-[9px] sm:text-[10px] font-bold text-accent-primary hover:bg-bg-elevated transition-colors duration-200"
-              aria-label="Offer details and currencies"
-            >
-              Details
-              <svg width="8" height="8" viewBox="0 0 10 10" fill="none" className="shrink-0" aria-hidden="true">
-                <path
-                  d="M2 5h6M5 2l3 3-3 3"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
+            {isExternal ? (
+              <a
+                href={activeAnn.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 inline-flex items-center gap-1 rounded-full bg-bg-base px-2 py-0.5 sm:px-2.5 text-[9px] sm:text-[10px] font-bold text-accent-primary hover:bg-bg-elevated transition-colors duration-200"
+                aria-label="Try tool"
+              >
+                Try it
+                <svg width="8" height="8" viewBox="0 0 10 10" fill="none" className="shrink-0" aria-hidden="true">
+                  <path
+                    d="M2 5h6M5 2l3 3-3 3"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+            ) : (
+              <Link
+                href={activeAnn.href}
+                className="shrink-0 inline-flex items-center gap-1 rounded-full bg-bg-base px-2 py-0.5 sm:px-2.5 text-[9px] sm:text-[10px] font-bold text-accent-primary hover:bg-bg-elevated transition-colors duration-200"
+                aria-label="Offer details"
+              >
+                Details
+                <svg width="8" height="8" viewBox="0 0 10 10" fill="none" className="shrink-0" aria-hidden="true">
+                  <path
+                    d="M2 5h6M5 2l3 3-3 3"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+            )}
 
             <button
               onClick={() => setVisible(false)}

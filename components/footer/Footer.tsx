@@ -64,7 +64,7 @@ export default function Footer() {
             </p>
 
             {/* Trust signals */}
-            <ul className="space-y-2.5 max-w-[300px]">
+            <ul className="space-y-2.5 max-w-[300px] mb-6">
               <li className="flex items-start gap-2">
                 <span
                   className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0"
@@ -91,6 +91,36 @@ export default function Footer() {
               </li>
             </ul>
 
+            {/* Proof of Capability Button */}
+            <div className="pt-2">
+              <a
+                href="https://pitch.qevn.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition-all duration-300 hover:scale-105"
+                style={{
+                  borderColor: 'rgba(182,247,110,0.2)',
+                  background: 'linear-gradient(135deg, rgba(182,247,110,0.06) 0%, rgba(15,16,18,1) 100%)',
+                  color: '#FFFFFF'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(182,247,110,0.5)'
+                  e.currentTarget.style.boxShadow = '0 0 15px rgba(182,247,110,0.15)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(182,247,110,0.2)'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B6F76E] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#B6F76E]"></span>
+                </span>
+                <span className="text-[10px] tracking-wider uppercase opacity-75">Proof of Capability:</span>
+                <span className="text-[#B6F76E]">Try AI Pitch Generator →</span>
+              </a>
+            </div>
+
           </div>
 
           {/* Link columns */}
@@ -103,17 +133,26 @@ export default function Footer() {
                 {column.title}
               </p>
               <ul className="space-y-3">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm transition-colors duration-200 hover:text-text-primary"
-                      style={{ color: 'var(--text-muted)' }}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {column.links.map((link) => {
+                  const isBtn = (link as { isButton?: boolean }).isButton
+                  return (
+                    <li key={link.label} className={isBtn ? "pt-2" : ""}>
+                      <Link
+                        href={link.href}
+                        target={(link as { target?: string }).target}
+                        rel={(link as { rel?: string }).rel}
+                        className={
+                          isBtn
+                            ? "inline-flex items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1.5 text-xs font-semibold text-white transition-all duration-200 hover:bg-[#B6F76E]/15 hover:border-[#B6F76E]/30 hover:text-[#B6F76E]"
+                            : "text-sm transition-colors duration-200 hover:text-text-primary"
+                        }
+                        style={isBtn ? undefined : { color: 'var(--text-muted)' }}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           ))}

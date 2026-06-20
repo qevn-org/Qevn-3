@@ -364,6 +364,19 @@ export default function RoiCalculator() {
                 </svg>
               </button>
 
+              {/* Free AI Pitch Generator Cross-Link */}
+              <div className="mt-4">
+                <a
+                  href="https://pitch.qevn.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-text-muted hover:text-[#B6F76E] transition-colors duration-200 font-medium"
+                >
+                  <span>Want a second proof point? Try our free AI Pitch Generator</span>
+                  <span>→</span>
+                </a>
+              </div>
+
               <p
                 className="text-xs mt-5 leading-relaxed max-w-md"
                 style={{ color: 'rgba(255,255,255,0.3)' }}

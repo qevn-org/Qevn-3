@@ -40,15 +40,29 @@ export default function Navbar() {
 
   /* Watch banner height so nav sits below it */
   useEffect(() => {
+    let observer: ResizeObserver | null = null
     const update = () => {
       const banner = document.getElementById('sale-banner')
-      setBannerHeight(banner ? banner.offsetHeight : 0)
+      if (banner) {
+        setBannerHeight(banner.offsetHeight)
+        if (!observer) {
+          observer = new ResizeObserver(update)
+          observer.observe(banner)
+        }
+      } else {
+        setBannerHeight(0)
+      }
     }
     update()
-    const observer = new ResizeObserver(update)
-    const banner = document.getElementById('sale-banner')
-    if (banner) observer.observe(banner)
-    return () => observer.disconnect()
+
+    window.addEventListener('qevn-chrome-top', update)
+    window.addEventListener('resize', update)
+
+    return () => {
+      window.removeEventListener('qevn-chrome-top', update)
+      window.removeEventListener('resize', update)
+      if (observer) observer.disconnect()
+    }
   }, [])
 
   useEffect(() => {
@@ -210,86 +224,117 @@ export default function Navbar() {
 
         {/* Connect With Us Spotlight */}
         <div
-          className="py-6 px-6 border-l"
+          className="py-6 px-6 border-l flex flex-col justify-between gap-5"
           style={{ 
             borderColor: 'rgba(255,255,255,0.05)',
             background: '#050505'
           }}
         >
-          <p
-            className="mb-4 text-[10px] font-semibold uppercase tracking-[0.12em] flex items-center gap-1.5"
-            style={{ color: '#FFFFFF' }}
+          <a
+            href="https://pitch.qevn.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setActiveMega(null)}
+            className="group block rounded-xl border p-4 transition-all duration-300 hover:border-[#B6F76E]/40 hover:scale-[1.02]"
+            style={{
+              borderColor: 'rgba(182,247,110,0.15)',
+              background: 'linear-gradient(135deg, rgba(182,247,110,0.06) 0%, rgba(5,5,5,1) 100%)',
+            }}
           >
-            Connect With Us
-          </p>
-          <div className="flex flex-col gap-3">
-            <a
-              href="https://www.linkedin.com/company/qevn/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
-              style={{ background: '#0A0A0A' }}
+            <span
+              className="inline-block text-[9px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded bg-[#B6F76E]/10 mb-2"
+              style={{ color: '#B6F76E' }}
             >
-              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-[#B5ED68]" style={{ color: 'rgba(255,255,255,0.65)' }}>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-              </span>
-              <div>
-                <p className="text-xs font-semibold text-white group-hover:text-[#B5ED68] transition-colors">
-                  LinkedIn
-                </p>
-                <p className="text-[11px] leading-snug mt-1 text-white/65" style={{ color: 'rgba(255,255,255,0.65)' }}>
-                  AI insights, case studies, and company updates
-                </p>
-              </div>
-            </a>
-            
-            <a
-              href="https://www.instagram.com/qevn.in?igsh=ZHh6bXRwZmpjaDN6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
-              style={{ background: '#0A0A0A' }}
+              FREE TOOL
+            </span>
+            <h4 className="text-xs font-bold text-white mb-1 group-hover:text-[#B6F76E] transition-colors">
+              See It Work Before You Book a Call
+            </h4>
+            <p className="text-[11px] leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.65)' }}>
+              Generate a tailored sales pitch for your business in 60 seconds — built by the same team, free to try.
+            </p>
+            <div className="flex items-center gap-1 text-[11px] font-bold text-[#B6F76E]">
+              <span>Try the AI Pitch Generator</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </div>
+          </a>
+
+          <div className="pt-4 border-t" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+            <p
+              className="mb-3 text-[10px] font-semibold uppercase tracking-[0.12em] flex items-center gap-1.5"
+              style={{ color: '#FFFFFF' }}
             >
-              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-[#B5ED68]" style={{ color: 'rgba(255,255,255,0.65)' }}>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-              </span>
-              <div>
-                <p className="text-xs font-semibold text-white group-hover:text-[#B5ED68] transition-colors">
-                  Instagram
-                </p>
-                <p className="text-[11px] leading-snug mt-1 text-white/65" style={{ color: 'rgba(255,255,255,0.65)' }}>
-                  Behind the scenes and product highlights
-                </p>
-              </div>
-            </a>
-            
-            <a
-              href="https://youtube.com/channel/UCCmfuadUWIN66Pc5YAWLQUQ/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
-              style={{ background: '#0A0A0A' }}
-            >
-              <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-[#B5ED68]" style={{ color: 'rgba(255,255,255,0.65)' }}>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.002 3.002 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.553 9.388.553 9.388.553s7.518 0 9.388-.553a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </span>
-              <div>
-                <p className="text-xs font-semibold text-white group-hover:text-[#B5ED68] transition-colors">
-                  YouTube
-                </p>
-                <p className="text-[11px] leading-snug mt-1 text-white/65" style={{ color: 'rgba(255,255,255,0.65)' }}>
-                  Automation demos and implementation guides
-                </p>
-              </div>
-            </a>
+              Connect With Us
+            </p>
+            <div className="flex flex-col gap-2">
+              <a
+                href="https://www.linkedin.com/company/qevn/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
+                style={{ background: '#0A0A0A' }}
+              >
+                <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-[#B5ED68]" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                </span>
+                <div>
+                  <p className="text-xs font-semibold text-white group-hover:text-[#B5ED68] transition-colors">
+                    LinkedIn
+                  </p>
+                  <p className="text-[11px] leading-snug mt-1 text-white/65" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                    AI insights, case studies, and company updates
+                  </p>
+                </div>
+              </a>
+              
+              <a
+                href="https://www.instagram.com/qevn.in?igsh=ZHh6bXRwZmpjaDN6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
+                style={{ background: '#0A0A0A' }}
+              >
+                <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-[#B5ED68]" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </span>
+                <div>
+                  <p className="text-xs font-semibold text-white group-hover:text-[#B5ED68] transition-colors">
+                    Instagram
+                  </p>
+                  <p className="text-[11px] leading-snug mt-1 text-white/65" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                    Behind the scenes and product highlights
+                  </p>
+                </div>
+              </a>
+              
+              <a
+                href="https://youtube.com/channel/UCCmfuadUWIN66Pc5YAWLQUQ/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-3 rounded-xl border border-white/[0.04] p-3 transition-all duration-200 hover:border-[#B5ED68]/20 hover:bg-white/[0.03]"
+                style={{ background: '#0A0A0A' }}
+              >
+                <span className="shrink-0 mt-0.5 opacity-90 transition-colors group-hover:text-[#B5ED68]" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.002 3.002 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.553 9.388.553 9.388.553s7.518 0 9.388-.553a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </span>
+                <div>
+                  <p className="text-xs font-semibold text-white group-hover:text-[#B5ED68] transition-colors">
+                    YouTube
+                  </p>
+                  <p className="text-[11px] leading-snug mt-1 text-white/65" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                    Automation demos and implementation guides
+                  </p>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
         </div>
