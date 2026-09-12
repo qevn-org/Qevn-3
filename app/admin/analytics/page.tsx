@@ -22,7 +22,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function AdminAnalyticsPage({ searchParams }: AdminPageProps) {
   const securityKey = searchParams.key
-  const expectedKey = 'qevn-telemetry-key'
+  const expectedKey = process.env.ADMIN_SECRET_KEY || process.env.ADMIN_KEY || 'qevn-telemetry-key'
 
   // Security Access Guard
   if (securityKey !== expectedKey) {

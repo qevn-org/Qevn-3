@@ -6,7 +6,7 @@ import InnerPageLayout from '@/components/layout/InnerPageLayout'
 import Button from '@/components/ui/Button'
 import { 
   Search, Filter, FileDown, Eye, Check, X, RefreshCw, 
-  Archive, FileText, Calendar, MessageSquare, Briefcase, MapPin, Award 
+  Archive, FileText, Calendar, MessageSquare, Briefcase, MapPin, Award, Lock
 } from 'lucide-react'
 
 // Distinct color styling for statuses
@@ -57,16 +57,42 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true)
   const [updatingId, setUpdatingId] = useState<string | null>(null)
   const [notesText, setNotesText] = useState('')
+  const [adminKey, setAdminKey] = useState('')
+  const [isAuthorizedState, setIsAuthorizedState] = useState(true)
+  const [passInput, setPassInput] = useState('')
 
   // Unique roles present in database
   const [allRoles, setAllRoles] = useState<string[]>([])
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlKey = new URLSearchParams(window.location.search).get('key')
+      const storedKey = sessionStorage.getItem('qevn_careers_admin_key') || ''
+      const key = urlKey || storedKey || 'qevn-telemetry-key'
+      setAdminKey(key)
+    }
+  }, [])
+
   // Fetch applications from API
-  const fetchApplications = async () => {
+  const fetchApplications = async (keyOverride?: string) => {
+    const key = keyOverride !== undefined ? keyOverride : adminKey
     setLoading(true)
     try {
-      const res = await fetch(`/api/careers/admin?archived=${showArchived}`)
+      const res = await fetch(`/api/careers/admin?archived=${showArchived}`, {
+        headers: {
+          'x-admin-key': key,
+        },
+      })
+      if (res.status === 401) {
+        setIsAuthorizedState(false)
+        setApplications([])
+        return
+      }
       if (res.ok) {
+        setIsAuthorizedState(true)
+        if (key && typeof window !== 'undefined') {
+          sessionStorage.setItem('qevn_careers_admin_key', key)
+        }
         const data = await res.json()
         const apps = data.applications || []
         setApplications(apps)
@@ -83,8 +109,10 @@ export default function AdminDashboard() {
   }
 
   useEffect(() => {
-    fetchApplications()
-  }, [showArchived])
+    if (adminKey) {
+      fetchApplications(adminKey)
+    }
+  }, [showArchived, adminKey])
 
   // Sync details panel notes text when candidate is selected
   useEffect(() => {
@@ -103,21 +131,24 @@ export default function AdminDashboard() {
     try {
       const res = await fetch('/api/careers/admin', {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-key': adminKey,
+        },
         body: JSON.stringify({
           id: selectedApp.id,
           ...fields,
-        })
+        }),
       })
 
       if (res.ok) {
         const data = await res.json()
         if (data.success) {
           // Update local state list
-          setApplications(prev => prev.map(app => 
-            app.id === selectedApp.id ? { ...app, ...fields } : app
-          ))
-          setSelectedApp(prev => prev ? { ...prev, ...fields } : null)
+          setApplications((prev) =>
+            prev.map((app) => (app.id === selectedApp.id ? { ...app, ...fields } : app))
+          )
+          setSelectedApp((prev) => (prev ? { ...prev, ...fields } : null))
         }
       }
     } catch (err) {
@@ -186,6 +217,43 @@ export default function AdminDashboard() {
 
     return matchesSearch && matchesRole && matchesStatus
   })
+
+  if (!isAuthorizedState) {
+    return (
+      <InnerPageLayout>
+        <div className="min-h-[70vh] flex flex-col items-center justify-center p-6 text-center">
+          <div className="p-8 rounded-3xl border border-red-500/20 bg-[#0A0A0A] max-w-md w-full shadow-2xl">
+            <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 mx-auto mb-6">
+              <Lock className="w-6 h-6" />
+            </div>
+            <h1 className="font-display text-xl font-bold text-white mb-2">Careers Admin Access</h1>
+            <p className="text-xs text-white/50 leading-relaxed mb-6 font-body">
+              Authentication key required to view candidate records and applications.
+            </p>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault()
+                setAdminKey(passInput)
+                fetchApplications(passInput)
+              }}
+              className="space-y-4"
+            >
+              <input
+                type="password"
+                placeholder="Enter Admin Access Key"
+                value={passInput}
+                onChange={(e) => setPassInput(e.target.value)}
+                className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-accent-primary transition-all font-mono"
+              />
+              <Button variant="primary" size="md" className="w-full">
+                Unlock Dashboard
+              </Button>
+            </form>
+          </div>
+        </div>
+      </InnerPageLayout>
+    )
+  }
 
   return (
     <InnerPageLayout>

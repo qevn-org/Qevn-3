@@ -3,9 +3,29 @@ import { supabaseServer } from '@/lib/supabaseClient'
 
 export const dynamic = 'force-dynamic'
 
-// GET handler to list applications with search and filters
+function isAuthorized(req: Request): boolean {
+  const adminKey = process.env.ADMIN_SECRET_KEY || process.env.ADMIN_KEY || 'qevn-telemetry-key'
+  const authHeader = req.headers.get('authorization')
+  const apiKeyHeader = req.headers.get('x-admin-key')
+  const { searchParams } = new URL(req.url)
+  const queryKey = searchParams.get('key')
+
+  if (apiKeyHeader && apiKeyHeader === adminKey) return true
+  if (queryKey && queryKey === adminKey) return true
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    return authHeader.substring(7).trim() === adminKey
+  }
+
+  return false
+}
+
+// GET handler to list applications with search and filters (Protected)
 export async function GET(req: Request) {
   try {
+    if (!isAuthorized(req)) {
+      return NextResponse.json({ error: 'Unauthorized access. Valid admin credentials required.' }, { status: 401 })
+    }
+
     const { searchParams } = new URL(req.url)
     const search = searchParams.get('search') || ''
     const role = searchParams.get('role') || ''
@@ -37,29 +57,56 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: error.message }, { status: 500 })
     }
 
-    // Filter by search client-side/post-query for ease of multi-column text search or write a structured query
     let filteredApps = applications || []
     if (search) {
       const searchLower = search.toLowerCase()
       filteredApps = filteredApps.filter(
         (app) =>
-          app.first_name.toLowerCase().includes(searchLower) ||
-          app.last_name.toLowerCase().includes(searchLower) ||
-          app.email.toLowerCase().includes(searchLower) ||
+          app.first_name?.toLowerCase().includes(searchLower) ||
+          app.last_name?.toLowerCase().includes(searchLower) ||
+          app.email?.toLowerCase().includes(searchLower) ||
           (app.custom_role && app.custom_role.toLowerCase().includes(searchLower))
       )
     }
 
-    return NextResponse.json({ applications: filteredApps })
+    // Generate signed URLs for resumes if storage path is stored
+    const enrichedApps = await Promise.all(
+      filteredApps.map(async (app) => {
+        if (app.resume_url && !app.resume_url.includes('token=')) {
+          // If stored as storage path or raw URL, attempt creating a fresh 1-hour signed URL
+          try {
+            const pathMatch = app.resume_url.match(/career-resumes\/(.+)$/)
+            const path = pathMatch ? pathMatch[1] : (app.id ? `${app.id}/resume.pdf` : null)
+            if (path) {
+              const { data: signedData } = await supabaseServer.storage
+                .from('career-resumes')
+                .createSignedUrl(path, 3600)
+              if (signedData?.signedUrl) {
+                return { ...app, resume_url: signedData.signedUrl }
+              }
+            }
+          } catch (e) {
+            // keep existing URL as fallback
+          }
+        }
+        return app
+      })
+    )
+
+    return NextResponse.json({ applications: enrichedApps })
   } catch (err) {
     console.error('Admin GET handler error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
-// PATCH handler to update status, notes, or archive state
+// PATCH handler to update status, notes, or archive state (Protected)
 export async function PATCH(req: Request) {
   try {
+    if (!isAuthorized(req)) {
+      return NextResponse.json({ error: 'Unauthorized access. Valid admin credentials required.' }, { status: 401 })
+    }
+
     const body = await req.json()
     const { id, status, notes, is_archived } = body
 
