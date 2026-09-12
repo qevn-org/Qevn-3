@@ -1,9 +1,23 @@
+import type { Metadata } from 'next'
 import InnerPageLayout from '@/components/layout/InnerPageLayout'
 import LegalPage from '@/components/sections/LegalPage'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Privacy Policy — QEVN',
   description: 'How QEVN collects, uses, and protects your data.',
+  alternates: { canonical: 'https://www.qevn.in/legal/privacy' },
+  openGraph: {
+    title: 'Privacy Policy — QEVN',
+    description: 'How QEVN collects, uses, and protects your data.',
+    url: 'https://www.qevn.in/legal/privacy',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Privacy Policy — QEVN' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy — QEVN',
+    description: 'How QEVN collects, uses, and protects your data.',
+    images: ['/og-image.png'],
+  },
 }
 
 export default function PrivacyPage() {

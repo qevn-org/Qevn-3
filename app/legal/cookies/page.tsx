@@ -1,9 +1,23 @@
+import type { Metadata } from 'next'
 import InnerPageLayout from '@/components/layout/InnerPageLayout'
 import LegalPage from '@/components/sections/LegalPage'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Cookie Policy — QEVN',
   description: 'How QEVN uses cookies and similar technologies.',
+  alternates: { canonical: 'https://www.qevn.in/legal/cookies' },
+  openGraph: {
+    title: 'Cookie Policy — QEVN',
+    description: 'How QEVN uses cookies and similar technologies.',
+    url: 'https://www.qevn.in/legal/cookies',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Cookie Policy — QEVN' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cookie Policy — QEVN',
+    description: 'How QEVN uses cookies and similar technologies.',
+    images: ['/og-image.png'],
+  },
 }
 
 export default function CookiesPage() {

@@ -1,9 +1,23 @@
+import type { Metadata } from 'next'
 import InnerPageLayout from '@/components/layout/InnerPageLayout'
 import LegalPage from '@/components/sections/LegalPage'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Terms of Service — QEVN',
   description: 'The terms governing your use of QEVN services.',
+  alternates: { canonical: 'https://www.qevn.in/legal/terms' },
+  openGraph: {
+    title: 'Terms of Service — QEVN',
+    description: 'The terms governing your use of QEVN services.',
+    url: 'https://www.qevn.in/legal/terms',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Terms of Service — QEVN' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service — QEVN',
+    description: 'The terms governing your use of QEVN services.',
+    images: ['/og-image.png'],
+  },
 }
 
 export default function TermsPage() {

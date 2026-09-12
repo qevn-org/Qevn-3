@@ -69,9 +69,6 @@ export const metadata: Metadata = {
   creator: 'QEVN',
   publisher: 'QEVN',
   category: 'technology',
-  alternates: {
-    canonical: BASE_URL,
-  },
   openGraph: {
     type: 'website',
     locale: 'en_IN',

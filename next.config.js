@@ -11,6 +11,11 @@ const nextConfig = {
         destination: '/how-it-works',
         permanent: true,
       },
+      {
+        source: '/blog',
+        destination: '/the-qevn-files',
+        permanent: true,
+      },
     ]
   },
 }

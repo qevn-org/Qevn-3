@@ -392,11 +392,72 @@ export const industrySeo: Record<string, PageSeoData> = {
       'travel workflow automation',
     ],
   },
+  'food-beverage': {
+    title: 'AI Automation for Food & Beverage — QEVN',
+    description:
+      'AI systems for restaurants and F&B: automated table reservations, phone ordering, guest support, and kitchen workflow tracking — zero missed bookings.',
+    keywords: [
+      'AI for restaurants',
+      'food and beverage automation',
+      'restaurant phone ordering AI',
+      'automated table reservations',
+      'F&B AI systems India',
+    ],
+  },
+  'professional-services': {
+    title: 'AI Automation for Professional Services — QEVN',
+    description:
+      'AI systems for consulting, accounting, and agencies: client onboarding, project reporting, invoice tracking, and meeting transcription — streamline billing and delivery.',
+    keywords: [
+      'AI for consulting firms',
+      'professional services automation',
+      'agency workflow automation',
+      'client onboarding AI',
+      'consulting AI India',
+    ],
+  },
+  nonprofits: {
+    title: 'AI Automation for Nonprofits & NGOs — QEVN',
+    description:
+      'AI tools for charities and NGOs: donor outreach automation, volunteer coordination, campaign reporting, and grant tracking — maximize impact with lean teams.',
+    keywords: [
+      'AI for nonprofits',
+      'NGO automation India',
+      'donor management AI',
+      'volunteer coordination automation',
+      'charity workflow AI',
+    ],
+  },
+  government: {
+    title: 'AI Automation for Public Sector & Government — QEVN',
+    description:
+      'Secure, compliant AI systems for public administration: citizen query resolution, document verification, departmental workflow routing, and grievance tracking.',
+    keywords: [
+      'AI for government',
+      'public sector automation India',
+      'citizen services AI',
+      'government workflow automation',
+      'e-governance AI',
+    ],
+  },
 }
 
 // ─── Static Page SEO ──────────────────────────────────────────────────────────
 
 export const staticPageSeo: Record<string, PageSeoData> = {
+  careers: {
+    title: 'Careers at QEVN — Join Our AI Engineering & Growth Teams | QEVN',
+    description:
+      'Explore open career opportunities at QEVN. We are hiring AI engineers, full stack developers, growth leaders, and automation specialists.',
+    keywords: [
+      'QEVN careers',
+      'AI engineering jobs India',
+      'AI jobs',
+      'machine learning jobs',
+      'work at QEVN',
+      'AI startup careers',
+    ],
+  },
   home: {
     title: 'QEVN | AI Agents, AI Employees & Business Automation',
     description:

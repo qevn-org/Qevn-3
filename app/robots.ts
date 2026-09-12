@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/legal/'],
+        disallow: ['/admin/', '/careers/admin', '/api/'],
       },
     ],
     sitemap: 'https://www.qevn.in/sitemap.xml',
